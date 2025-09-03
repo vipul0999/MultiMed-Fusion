@@ -31,7 +31,7 @@ A tool that collects medical files such as lab reports, medical images, and audi
 
 ---
 
-## 3. References (Starter List)
+## 3. References (For Now )
 - HIPAA De-identification Guidance – HHS: https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html  
 - DICOM PS3.15 (De-identification Profiles): https://dicom.nema.org/medical/dicom/current/output/html/part15.html  
 - i2b2 De-identification Challenge (PHI removal benchmark): https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/  
