@@ -1,5 +1,5 @@
-# Research Notes – Medical AI Summarizer  
-_Date: 2025-09-03_
+# Research Notes – Multi-Modal Medical Data & AI Summary .
+
 
 ## 1. Project Brief
 A tool that collects medical files such as lab reports, medical images, and audio notes, then uses AI to create easy-to-read summaries for doctors.
