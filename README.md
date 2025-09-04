@@ -11,3 +11,6 @@ Right now, there isn’t a simple way to bring all these different types of medi
 Technicalities and Softwares used:
 
 The MultiMed Fusion project uses a Python (Flask/FastAPI) backend with AI models built on PyTorch/TensorFlow and Hugging Face to generate summaries from medical reports, images, and audio notes. A Bootstrap-based dashboard presents these summaries with links to original files, while spaCy, regex, and pydicom ensure anonymization of sensitive data. Results are stored in MongoDB/PostgreSQL, tested with PyTest and Postman, versioned in GitHub, and deployed on Render or Dockerized cloud environments for accessibility.
+(09/03/2025)
+
+
