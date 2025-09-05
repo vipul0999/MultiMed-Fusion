@@ -1,0 +1,37 @@
+1. Business Understanding
+Doctors spend a lot of time going through lab results, medical scans, and notes separately, which slows down decision-making. Patients are also concerned about the safety of their personal health information.
+Goal: Build a tool that combines these medical files and produces short, secure summaries to save time and protect privacy.
+
+2. Data Understanding
+Determine the types of input data required (reports, images, audio).
+Look for publicly accessible or testable datasets.
+Assess data quality, identify potential gaps, and note privacy risks.
+
+3. Data Preparation
+Clean text data and remove sensitive identifiers.
+Convert audio notes into text form.
+Standardize images so they are ready for analysis.
+Create a process to anonymize all data before use.
+
+4. Model Building
+Train a summarization model for reports and notes.
+Add an image analysis step for interpreting scans.
+Combine the text and image outputs into a quick summary.
+Refine the models step by step until the summaries are accurate and easy to read.
+
+5.Evaluation
+Check the AI-generated summaries by comparing them with expert-written ones.
+Measure performance using accuracy, readability, and privacy checks.
+Gather feedback from doctors and medical students.
+Fine-tune models based on evaluation results.
+
+6.Model Deployment
+Build a secure web interface where doctors can upload medical files.
+Show summaries together with links to the original documents.
+Make sure the system follows healthcare rules such as HIPAA and GDPR.
+
+7.Monitoring & Maintenance
+Keep an eye on performance to spot drops in accuracy.
+Record and fix errors quickly.
+Refresh models with new data or formats when needed.
+Carry out regular checks to confirm privacy and compliance.
