@@ -1,3 +1,5 @@
+## Daily Log: September 8 2025 - Team 3
+
 ## Project Statement
 
 Doctors frequently review patients’ information that is present across lab reports, radiology images, and dictated or transcribed notes before making decisions about patient care. These reports are stored in different places and formats, so each one must be opened and read separately. Clinicians then try to connect details across sources while working under time pressure, which increases the chance that important findings are overlooked.
