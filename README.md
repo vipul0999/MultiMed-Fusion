@@ -13,4 +13,31 @@ Technicalities and Softwares used:
 The MultiMed Fusion project uses a Python (Flask/FastAPI) backend with AI models built on PyTorch/TensorFlow and Hugging Face to generate summaries from medical reports, images, and audio notes. A Bootstrap-based dashboard presents these summaries with links to original files, while spaCy, regex, and pydicom ensure anonymization of sensitive data. Results are stored in MongoDB/PostgreSQL, tested with PyTest and Postman, versioned in GitHub, and deployed on Render or Dockerized cloud environments for accessibility.
 (09/03/2025)
 
+---
+
+## ✨ New Features & Functions (Extension)
+
+### 1. Critical Findings Highlight  
+Summaries now highlight **abnormal lab values, urgent notes, or red-flag findings** in a color-coded format so doctors can prioritize urgent cases faster.  
+
+### 2. Multi-Language Support  
+The dashboard supports **multiple languages**, allowing international doctors and patients to interact with the system more easily.  
+
+### 3. Audit & Traceability  
+Every summary includes **links back to the original files** and a change log of anonymization steps, ensuring full traceability for compliance and audits.  
+
+### 4. Role-Based Access Control  
+User accounts can be set up for **doctors, administrators, and researchers** with different access levels, keeping patient data secure and restricting who can view what.  
+
+### 5. Export & Reporting  
+Doctors can export AI-generated summaries as **PDF or CSV reports**, making it easier to attach findings to patient records or share with colleagues.  
+
+### 6. API Endpoints for Integration  
+MultiMed Fusion now exposes **REST API endpoints** so hospitals can integrate summaries into their existing Electronic Health Record (EHR) systems.  
+
+---
+
+📌 *These functions are part of ongoing improvements to make MultiMed Fusion more practical, accessible, and secure for real-world healthcare workflows.*
+(09/09/25)
+
 
