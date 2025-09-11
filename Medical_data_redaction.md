@@ -1,7 +1,8 @@
 # Medical Data Redaction and Validation
 
-## Python Code
+This script anonymizes sensitive information in medical records and validates the required fields before processing.
 
+```python
 import re
 
 def redact(text):
@@ -36,5 +37,5 @@ try:
         print(f"Validated: {redacted}")
 except ValueError as e:
     print(f"Error: {e}")
-    
+
     
