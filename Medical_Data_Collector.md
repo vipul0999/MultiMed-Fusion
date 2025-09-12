@@ -27,4 +27,3 @@ record = collect_patient_data(
 print("Collected Patient Record:")
 for key, value in record.items():
     print(f"{key}: {value}")
-
