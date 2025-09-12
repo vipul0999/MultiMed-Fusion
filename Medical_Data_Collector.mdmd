@@ -1,4 +1,5 @@
-# Medical_Data_Collector.py
+# medical_data_collector.py
+Collects lab results, prescriptions, and doctor notes into one patient record.
 
 from datetime import datetime
 
