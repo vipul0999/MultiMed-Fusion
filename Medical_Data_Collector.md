@@ -1,3 +1,5 @@
+# Medical_Data_Collector.py
+
 from datetime import datetime
 
 def collect_patient_data(patient_id, lab_results, prescriptions, notes):
