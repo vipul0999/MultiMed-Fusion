@@ -220,4 +220,44 @@ Below is the prototype mockup describing all planned frontend features:
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/58f987e6-7e1e-439a-8a0b-be02f31dec93" />
 
 
+### **Daily Log: September 15, 2025**
+
+# Use Case: Multi Med Fusion
+
+## 1. Goal
+The doctor wants to get a quick, accurate summary of a patient's medical history to save time and review all information from various files.
+
+## 2. Actors
+- **Primary Actor:** Doctor  
+- **System:** The AI Medical Summary Tool  
+
+## 3. Preconditions
+- The doctor has an active account and is logged into the system.  
+- The patient's medical files (e.g., lab reports, images, audio notes) are available and accessible to the doctor.  
+- The system's AI is operational and ready to process new data.  
+
+## 4. Main Flow
+1. The doctor navigates to the patient's record.  
+2. The doctor selects the medical files to be processed (e.g., uploads new files or selects existing ones from a list).  
+3. The doctor clicks the **"Generate Summary"** button.  
+4. The system anonymizes the uploaded files by removing patient-identifying information.  
+5. The system sends the anonymized files to the AI for analysis.  
+6. The AI processes the files and generates a summary.  
+7. The system receives the AI-generated summary.  
+8. The system displays the summary to the doctor, including links back to the original source files for verification.  
+
+## 5. Postconditions
+- An AI-generated summary is successfully created and stored in the patient's record.  
+- The original, uploaded files remain anonymized to ensure patient privacy.  
+
+## 6. Alternative and Exception Flows
+- **No Files Selected:** The system displays a message, *"Please select one or more files to generate a summary."* The process ends.  
+- **File Format Not Supported:** The system alerts the doctor with an error message, *"Unsupported file type. Please upload a lab report, medical image, or audio note."* The process ends.  
+- **AI Processing Error:** If the AI fails to generate a summary, the system displays an error message, *"Unable to generate a summary at this time. Please try again later or contact support."*  
+- **AI Generates Vague/Incomplete Summary:** The doctor has the option to flag the summary as incomplete or unhelpful. This feedback is logged for future AI model improvement.  
+
+---
+
+
+
 
