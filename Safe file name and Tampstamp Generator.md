@@ -1,4 +1,6 @@
-'''
+# Safe file name and Tampstamp Generator
+
+```Python
 import re
 from datetime import datetime
 
