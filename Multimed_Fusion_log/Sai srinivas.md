@@ -258,6 +258,82 @@ The doctor wants to get a quick, accurate summary of a patient's medical history
 
 ---
 
+### **Daily Log: September 17, 2025**
+# MultiMed Fusion – Proposed Prototypes
+
+### Semester Prototype Agreement
+
+This page outlines the list of prototypes that will be developed for **MultiMed Fusion** by the end of this semester. This list serves as an agreement between the development team and the mentor. Each prototype will demonstrate a core aspect of the system and will act as a foundation for further development next semester.
+
+---
+
+## **Prototypes to be Delivered**
+
+### 1. **User Authentication & Access**
+- Prototype login and signup pages (Doctor & Patient roles).
+- Basic session management and role-based dashboard redirection.
+- Password reset workflow (mock, no backend integration yet).
+
+---
+
+### 2. **File Upload & Management**
+- Web prototype for uploading files (PDF, image).
+- Mobile prototype for camera-based upload (mocked workflow).
+- Basic preview of uploaded files (static rendering).
+
+---
+
+### 3. **Anonymization & Privacy Controls**
+- Mock anonymization flow (upload → anonymization confirmation screen).
+- Toggle to view/hide personally identifiable details (prototype only).
+
+---
+
+### 4. **Doctor’s Summary Dashboard**
+- Static dashboard mockup showing unified AI-generated summary.
+- Expandable sections for labs, imaging, and notes.
+- Clickable placeholders linking back to uploaded files.
+
+---
+
+### 5. **Patient Dashboard**
+- Prototype patient-facing dashboard for uploaded files and summaries.
+- Privacy indicator showing anonymized files.
+- Sharing request mockup for allowing access to doctors.
+
+---
+
+### 6. **Notifications & Alerts**
+- Prototype notification panel (UI only).
+- Mock push/email alert for new summaries (no live service).
+
+---
+
+### 7. **Search & Filtering**
+- Simple prototype search bar with static results.
+- Filter panel UI (file type, date range).
+
+---
+
+### 8. **Mobile-Specific Prototype**
+- Mobile wireframe showing biometric login (mock only).
+- Mobile summary card view optimized for small screens.
+
+---
+
+## **Stretch Goals (If Time Permits)**
+- Collaboration mockup: doctor-to-doctor notes and chat UI.  
+- Offline mode UI demonstration.  
+- Initial localization setup (multi-language toggle).  
+
+
+---
+
+### **Notes**
+- These prototypes are UI/UX only (mockups or limited front-end functionality).  
+- Full backend integration, AI summarization, and real anonymization will be addressed in later development cycles.  
+- This ensures realistic progress while building a solid foundation for next semester.  
+
 
 
 
