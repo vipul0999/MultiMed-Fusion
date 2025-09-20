@@ -332,7 +332,127 @@ This page outlines the list of prototypes that will be developed for **MultiMed 
 ### **Notes**
 - These prototypes are UI/UX only (mockups or limited front-end functionality).  
 - Full backend integration, AI summarization, and real anonymization will be addressed in later development cycles.  
-- This ensures realistic progress while building a solid foundation for next semester.  
+- This ensures realistic progress while building a solid foundation for next semester.
+
+
+
+
+# MultiMed Fusion – Daily Log
+
+### **Daily Log: September 19, 2025**
+
+#### ** Models and Pages for a Professional Application**
+
+---
+
+## **Core Models**
+
+1. **User Model**
+   - Fields: `id`, `name`, `email`, `role (Doctor/Patient/Admin)`, `passwordHash`, `createdAt`
+   - Purpose: Manage authentication and roles.
+
+2. **Patient Model**
+   - Fields: `id`, `name`, `dob`, `gender`, `contactInfo`, `medicalHistory`
+   - Purpose: Store patient details for doctors’ reference.
+
+3. **Doctor Model**
+   - Fields: `id`, `name`, `specialization`, `hospitalAffiliation`, `licenseNumber`
+   - Purpose: Manage doctor profiles and credentials.
+
+4. **File Model**
+   - Fields: `id`, `patientId`, `fileType (PDF/Image/Audio)`, `filePath`, `uploadedBy`, `uploadedAt`
+   - Purpose: Track medical files uploaded by users.
+
+5. **Summary Model**
+   - Fields: `id`, `patientId`, `doctorId`, `summaryText`, `createdAt`
+   - Purpose: Store AI-generated summaries linked to original files.
+
+6. **Anonymization Model**
+   - Fields: `id`, `fileId`, `status (anonymized/pending)`, `removedFields`
+   - Purpose: Track privacy compliance.
+
+7. **Notification Model**
+   - Fields: `id`, `userId`, `type (email/push)`, `message`, `status`, `createdAt`
+   - Purpose: Manage system alerts.
+
+8. **AuditLog Model**
+   - Fields: `id`, `action`, `userId`, `timestamp`, `details`
+   - Purpose: Track security and compliance events.
+
+---
+
+## **Frontend Pages**
+
+1. **Landing Page**
+   - Intro to MultiMed Fusion
+   - Login/Signup options
+
+2. **Authentication Pages**
+   - Login
+   - Signup
+   - Password Reset
+   - MFA Verification
+
+3. **Doctor Dashboard**
+   - Summary view (labs, images, notes)
+   - Timeline view
+   - File references
+   - Notifications
+
+4. **Patient Dashboard**
+   - Uploaded files list
+   - Privacy indicator (anonymized status)
+   - AI summaries (simplified language)
+   - Sharing requests
+
+5. **File Management Pages**
+   - Upload (drag-drop, camera, audio)
+   - File preview (PDF, image, audio player)
+
+6. **Anonymization Pages**
+   - Anonymization confirmation
+   - Toggle sensitive data on/off
+   - Patient consent page
+
+7. **Collaboration Pages**
+   - Doctor-to-doctor notes
+   - Chat interface
+   - Image annotation tools
+
+8. **Search & Filter Page**
+   - Search bar with AI-assisted queries
+   - Filters (file type, date, doctor)
+
+9. **Notifications Page**
+   - Alerts for new summaries
+   - Critical flags
+
+10. **Settings Page**
+    - Profile management
+    - Dark/Light mode
+    - Language localization
+    - Notification preferences
+
+11. **Mobile-Specific Views**
+    - Biometric login
+    - Mobile-friendly summary cards
+    - Offline mode
+
+12. **Admin Pages (Future)**
+    - Audit logs viewer
+    - System monitoring
+
+---
+
+## **Purpose**
+This structure of **models + pages** ensures:
+- Scalable backend with proper data models.
+- Professional, user-friendly frontend for doctors and patients.
+- Compliance-ready features (privacy, security, audit logs).
+- A clear roadmap for incremental feature delivery.
+
+---
+
 
 
 
