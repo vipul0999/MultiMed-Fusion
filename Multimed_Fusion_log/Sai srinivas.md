@@ -533,6 +533,75 @@ These are the user-facing parts of the application, designed to be simple and in
     * **Purpose:** Allows the doctor to manage their profile and account settings.
     * **Features:** Change password, update email, and potentially manage notification preferences.
 
+# MultiMed Fusion – Requirement Engineering Daily Log
+
+---
+
+### **Daily Log: September 24, 2025**
+
+## **Day 1 – Requirement Elicitation**
+- **Tasks:**
+  - Conducted stakeholder interviews (doctors, patients, hospital IT staff).
+  - Reviewed existing medical systems for pain points.
+  - Identified key user needs: faster summaries, data privacy, multi-modal support.
+- **Outputs:**
+  - Initial user stories (Doctor → “I want a single summary”, Patient → “I want anonymized data”).
+  - Stakeholder list: Doctors, Patients, Hospital Admins, Researchers, IT Managers.
+
+---
+
+## **Day 2 – Requirement Analysis**
+- **Tasks:**
+  - Classified requirements into **Functional** and **Non-Functional**.
+  - Resolved conflicts (Doctors want full details, Patients want anonymization).
+  - Created priority levels (High: Authentication, Upload, Summary; Medium: Collaboration, Notifications).
+- **Outputs:**
+  - Requirement categories table.
+  - Preliminary system scope defined.
+
+---
+
+## **Day 3 – Requirement Specification**
+- **Tasks:**
+  - Wrote Software Requirement Specification (SRS) draft in structured format.
+  - Converted user stories into use cases.
+  - Added acceptance criteria for each use case.
+- **Outputs:**
+  - **Functional Requirements**: Auth, Upload, Anonymization, Summarization, Dashboards, Search.
+  - **Non-Functional Requirements**: Security, Privacy, Scalability, Usability, Performance.
+  - UML Use Case Diagram (planned).
+
+---
+
+## **Day 4 – Requirement Validation**
+- **Tasks:**
+  - Conducted walkthrough session with mentor.
+  - Validated feasibility of prototypes with available tools (React, Django, FastAPI).
+  - Checked compliance with privacy regulations (HIPAA-style anonymization).
+- **Outputs:**
+  - Reviewed requirements checklist.
+  - Approval for Semester Prototype Plan.
+
+---
+
+## **Day 5 – Requirement Management**
+- **Tasks:**
+  - Set up GitHub Wiki for living requirement document.
+  - Linked “Prototypes Agreement” page from the main repo.
+  - Created change log format for tracking evolving requirements.
+- **Outputs:**
+  - Requirement traceability matrix (RTM) structure.
+  - Wiki page update: [Requirements Page](https://github.com/your-username/MultiMed-Fusion/wiki/Requirements)
+
+---
+
+## **Purpose**
+This daily requirement engineering log ensures:
+- Continuous alignment between stakeholders and developers.  
+- A professional, traceable process of requirement gathering.  
+- A realistic scope for semester prototypes.  
+
+---
 
 
 
