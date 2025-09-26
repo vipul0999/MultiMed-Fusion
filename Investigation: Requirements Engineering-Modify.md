@@ -86,4 +86,3 @@ Example: "The login process should take less than three seconds, so users don't 
 
 \[5\] W. Andhika, M. Iqbal, M. Nur, and R. D. Nugroho, "Teknik Representasi Kebutuhan Pengguna Menggunakan User Persona (Studi Kasus: Relasi antara Presensi dengan Kemampuan Kompetensi)," _J. Teknol. Inf. dan Ilmu Komput._, vol. 8, no. 2, p. 245, 2021, doi: 10.25126/jtiik.0813444.
 
-**Wiki URL:** <https://github.com/vipul0999/MultiMed-Fusion>
