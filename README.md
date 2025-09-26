@@ -46,6 +46,8 @@ This helps:
 - 📧 **Basic Notifications** → Email alerts when summaries are ready.  
 - ❤️ **Health Check Endpoint** → `/health` endpoint to verify if the backend is running.  
 - 🔐 **Access Control** → Only authorized users can view patient data.  
+- 🧪 **Testing Improvements** → Added automated test coverage reports with CI.  
+- 📊 **System Monitoring** → Added `/metrics` endpoint to track system performance.  
 
 ---
 
@@ -54,13 +56,13 @@ This helps:
 To better understand the system, we created diagrams:
 
 - **Use Case Diagram**  
-  ![Use Case Diagram](images/updated-use-case-diagram-clear.png)
+  ![Use Case Diagram](https://github.com/vipul0999/MultiMed-Fusion/blob/main/Images/updated_use_case_diagram_clear.png)
 
 - **System Architecture**  
-  ![System Architecture](images/system-architecture.png)
+  ![System Architecture](https://github.com/vipul0999/MultiMed-Fusion/blob/main/Images/system_architecture.png)
 
 - **Sequence Diagram**  
-  ![Sequence Diagram](images/sequence-diagram.png)
+  ![Sequence Diagram](https://github.com/vipul0999/MultiMed-Fusion/blob/main/Images/sequence_diagram.png)
 
 ---
 
@@ -74,4 +76,4 @@ To better understand the system, we created diagrams:
 
 ---
 
-*Last updated: 09/24/2025 *
+*Last updated: 09/26/2025*
