@@ -537,7 +537,7 @@ These are the user-facing parts of the application, designed to be simple and in
 
 ---
 
-### **Daily Log: September 24, 2025**
+### **Daily Log: September 26, 2025**
 
 ## **Day 1 – Requirement Elicitation**
 - **Tasks:**
@@ -604,5 +604,112 @@ This daily requirement engineering log ensures:
 ---
 
 
+
+
+---
+
+### **Daily Log: September 24, 2025**
+
+## **Planned Full Interface **
+
+---
+
+### 1. **Landing Page**
+- Entry page with project branding and navigation.
+- Includes login and signup buttons.
+- Provides a short overview of MultiMed Fusion.
+
+---
+
+### 2. **Authentication Pages**
+- **Login:** Email, password, and MFA code entry.  
+- **Signup:** Name, email, password, and role selection (Doctor/Patient).  
+- **Password Reset:** Input email to receive reset instructions.  
+
+---
+
+### 3. **Doctor Dashboard**
+- AI-generated medical summary.  
+- Expandable sections for labs, imaging, and notes.  
+- Patient history timeline.  
+- Quick access links to original files.  
+- Notifications panel for new reports.  
+
+---
+
+### 4. **Patient Dashboard**
+- List of uploaded files.  
+- Privacy indicator showing anonymized status.  
+- Simplified summaries in patient-friendly language.  
+- Option to share access with doctors or caregivers.  
+
+---
+
+### 5. **File Upload Page**
+- Drag-and-drop upload feature for web.  
+- Camera and audio upload for mobile.  
+- Progress bar for uploads.  
+- File preview (PDF, image, audio).  
+
+---
+
+### 6. **Anonymization Page**
+- Confirmation screen before saving files.  
+- Toggle to anonymize data (hide PHI).  
+- Patient consent form (digital signature).  
+
+---
+
+### 7. **Collaboration Page**
+- Doctor-to-doctor notes.  
+- Secure chat between patients and doctors.  
+- Image annotation tools.  
+- Audio-to-text transcription for notes.  
+
+---
+
+### 8. **Search & Filter Page**
+- Search bar for quick queries.  
+- Filters for file type and date range.  
+- AI-powered natural language search (e.g., “latest MRI scan”).  
+
+---
+
+### 9. **Notifications Panel**
+- Alerts for new summaries.  
+- Reminders for pending reviews.  
+- Urgent flags for critical findings.  
+
+---
+
+### 10. **Settings Page**
+- Profile management (doctor and patient).  
+- Dark/Light mode toggle.  
+- Language localization options.  
+- Notification preferences.  
+- Accessibility controls (font size, color contrast).  
+
+---
+
+### 11. **Mobile-Specific Views**
+- Biometric login (Face ID/Touch ID).  
+- Mobile-optimized summary cards.  
+- Offline mode to view cached summaries.  
+
+---
+
+### 12. **Admin & Security Pages (Future)**
+- Audit log viewer for administrators.  
+- System monitoring tools.  
+- Access control management.  
+- Indicators for encryption and compliance.  
+
+---
+
+## **Purpose**
+This daily log defines the **entire planned interface** of MultiMed Fusion in text format.  
+It serves as a blueprint for building both the **web** and **mobile applications** in a professional and structured way.  
+
+---
 
 
