@@ -712,4 +712,75 @@ It serves as a blueprint for building both the **web** and **mobile applications
 
 ---
 
+# MultiMed Fusion – Non-Functional Requirements Daily Log
+
+---
+
+### **Daily Log: September 29, 2025**
+
+## **Identified Non-Functional Requirements**
+
+---
+
+### 1. **Performance**
+- The system shall generate AI summaries within **5 seconds** for average-sized files.  
+- File uploads shall support up to **100 MB per file** without timeouts.  
+- The mobile app shall load the dashboard in under **2 seconds** on 4G networks.  
+
+---
+
+### 2. **Scalability**
+- The system shall support **up to 10,000 concurrent users** without performance degradation.  
+- Cloud infrastructure shall allow scaling of storage and processing on demand.  
+
+---
+
+### 3. **Security**
+- All communication shall be **encrypted (HTTPS, TLS 1.2+)**.  
+- User sessions shall expire automatically after **15 minutes of inactivity**.  
+- The system shall support **multi-factor authentication (MFA)**.  
+- Sensitive data (patient PHI) shall never be displayed without anonymization toggle.  
+
+---
+
+### 4. **Privacy & Compliance**
+- All uploaded files shall be anonymized before storage.  
+- The system shall comply with **HIPAA-style standards** for handling medical data.  
+- Patient consent shall be required before any data sharing.  
+
+---
+
+### 5. **Usability**
+- Interfaces shall be **intuitive and consistent** across web and mobile.  
+- The system shall provide **multi-language support** (English, Spanish, others in future).  
+- Accessibility features shall include **screen reader compatibility, adjustable font sizes, and high-contrast mode**.  
+
+---
+
+### 6. **Reliability & Availability**
+- The system shall provide **99.9% uptime** during semester prototype testing.  
+- Summaries and files shall be cached locally to handle temporary outages.  
+- System shall auto-recover from crashes without data loss.  
+
+---
+
+### 7. **Maintainability**
+- Codebase shall follow **modular architecture** (separating frontend, backend, AI services).  
+- Documentation shall be maintained in the GitHub wiki for every release.  
+- Unit tests shall cover at least **70% of frontend and backend modules**.  
+
+---
+
+### 8. **Portability**
+- The application shall run on **modern web browsers (Chrome, Firefox, Safari, Edge)**.  
+- Mobile app shall support **iOS 15+ and Android 11+**.  
+- Deployment shall be containerized using **Docker** for portability.  
+
+---
+
+## **Purpose**
+This daily log documents the **non-functional requirements (NFRs)** of MultiMed Fusion.  
+It ensures the project is not only feature-complete (functional requirements) but also professional, secure, scalable, and user-friendly.  
+
+---
 
