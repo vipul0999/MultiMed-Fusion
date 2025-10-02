@@ -784,3 +784,100 @@ It ensures the project is not only feature-complete (functional requirements) bu
 
 ---
 
+# MultiMed Fusion – Use Case Daily Log
+
+---
+
+### **Daily Log: October 1, 2025**
+
+## **Use Cases Matching Functional Requirements**
+
+---
+
+### 1. **User Authentication & Access**
+- **Actors:** Doctor, Patient, System  
+- **Description:** A user logs in or signs up to access the system. The system verifies credentials and redirects based on role.  
+- **Precondition:** User must have valid account or register successfully.  
+- **Postcondition:** User is authenticated and granted access to their dashboard.  
+
+---
+
+### 2. **File Upload & Management**
+- **Actors:** Doctor, Patient  
+- **Description:** A user uploads medical files (PDFs, images, audio). System stores and prepares them for processing.  
+- **Precondition:** User is logged in.  
+- **Postcondition:** Files are uploaded, stored securely, and ready for processing.  
+
+---
+
+### 3. **Anonymization of Patient Data**
+- **Actors:** Patient, System  
+- **Description:** System anonymizes uploaded files to remove PHI before storage.  
+- **Precondition:** File is uploaded.  
+- **Postcondition:** An anonymized copy is stored, ensuring privacy compliance.  
+
+---
+
+### 4. **AI Summary Generation**
+- **Actors:** Doctor, System  
+- **Description:** System generates an AI summary of uploaded files and provides links back to originals.  
+- **Precondition:** Files are uploaded and processed.  
+- **Postcondition:** Summary is displayed on the doctor’s dashboard.  
+
+---
+
+### 5. **Doctor’s Summary Dashboard**
+- **Actors:** Doctor  
+- **Description:** Doctor views AI-generated summary, explores sections (labs, imaging, notes), and accesses original files.  
+- **Precondition:** AI summary is available.  
+- **Postcondition:** Doctor saves time by reviewing summarized results.  
+
+---
+
+### 6. **Patient Dashboard**
+- **Actors:** Patient  
+- **Description:** Patient views uploaded history, simplified summaries, and anonymization status.  
+- **Precondition:** Patient has uploaded files or received summaries.  
+- **Postcondition:** Patient can understand medical history in simplified form.  
+
+---
+
+### 7. **Notifications & Alerts**
+- **Actors:** Doctor, Patient, System  
+- **Description:** System notifies users of new summaries, urgent findings, or pending reviews.  
+- **Precondition:** User is logged in.  
+- **Postcondition:** User is informed and takes necessary action.  
+
+---
+
+### 8. **Search & Filtering**
+- **Actors:** Doctor, Patient  
+- **Description:** User searches for medical records using keywords, filters, or natural language queries.  
+- **Precondition:** Files/summaries are available in the system.  
+- **Postcondition:** Search results are displayed with relevant filters applied.  
+
+---
+
+### 9. **Collaboration & Communication**
+- **Actors:** Doctor, Patient  
+- **Description:** Doctors exchange notes, annotate medical images, and chat securely with patients.  
+- **Precondition:** Users are logged in with correct permissions.  
+- **Postcondition:** Communication is logged securely, aiding collaboration.  
+
+---
+
+### 10. **Settings & Preferences**
+- **Actors:** Doctor, Patient  
+- **Description:** User customizes profile, themes, language, and notification preferences.  
+- **Precondition:** User is authenticated.  
+- **Postcondition:** Preferences are applied to enhance user experience.  
+
+---
+
+## **Purpose**
+This daily log captures the **use cases directly mapped to functional requirements** of MultiMed Fusion.  
+It ensures **traceability** between what the system is expected to do (requirements) and how users will interact with it (use cases).  
+
+---
+
+
