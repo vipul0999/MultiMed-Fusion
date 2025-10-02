@@ -43,11 +43,13 @@ This helps:
 
 - 📂 **File Versioning** → Keeps old versions of uploaded files for safety and compliance.  
 - 🔎 **Search Functionality** → Doctors can search summaries by **keywords or dates**.  
-- 📧 **Basic Notifications** → Email alerts when summaries are ready.  
+- 📧 **Basic Notifications** → Email alerts when summaries are ready (toggle via `.env`).  
 - ❤️ **Health Check Endpoint** → `/health` endpoint to verify if the backend is running.  
 - 🔐 **Access Control** → Only authorized users can view patient data.  
-- 🧪 **Testing Improvements** → Added automated test coverage reports with CI.  
-- 📊 **System Monitoring** → Added `/metrics` endpoint to track system performance.  
+- 🧪 **Testing Improvements** → Automated test coverage reports integrated with CI.  
+- 📊 **System Monitoring** → `/metrics` endpoint to track API health and performance.  
+- 🌍 **Multi-Language Support (basic)** → Default summary language can be set in `.env`.  
+- ⚡ **Async Task Toggle** → Added option to enable/disable background tasks via `.env`.  
 
 ---
 
@@ -76,4 +78,4 @@ To better understand the system, we created diagrams:
 
 ---
 
-*Last updated: 09/26/2025*
+*Last updated: 10/01/2025*
