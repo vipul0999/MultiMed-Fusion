@@ -1,57 +1,71 @@
-# Research Notes – Multi-Modal Medical Data & AI Summary .
+# 📑 Research Notes – Multi-Modal Medical Data & AI Summary
 
+---
 
 ## 1. Project Brief
-A tool that collects medical files such as lab reports, medical images, and audio notes, then uses AI to create easy-to-read summaries for doctors.
+MultiMed Fusion is a tool that collects medical files such as **lab reports, medical images, and audio notes**, then uses AI to create **easy-to-read summaries** for doctors.  
+The goal is to save doctors time, reduce cognitive load, and ensure patient privacy through anonymization.  
 
 ### User Stories
 - **Doctor:** Wants a single summary from different sources to save time.  
-  - *Acceptance:* AI creates a summary with links back to original files.  
+  - *Acceptance:* AI generates a structured summary with links back to original files.  
 - **Patient:** Wants private details removed to keep their data safe.  
-  - *Acceptance:* Uploaded files are anonymized before saving.  
+  - *Acceptance:* Uploaded files are anonymized before saving or processing.  
 
 ---
 
 ## 2. Key Research Areas
 
 ### a) Clinical & Radiology Summarization
-- Large Language Models (LLMs) can generate concise summaries of discharge notes, radiology reports, and clinical conversations.  
-- Common datasets: **MIMIC-CXR**, **RadSum23**, **MEDIQA** tasks.  
-- Evaluation metrics include **ROUGE**, **BERTScore**, and **clinician factuality review**.  
+- Large Language Models (LLMs) like **BioBART, ClinicalBERT, GPT-4, and MedPaLM** can summarize discharge notes, radiology reports, and doctor-patient conversations.  
+- Datasets used for evaluation include:  
+  - **MIMIC-CXR** (radiology reports)  
+  - **RadSum23** (radiology summarization)  
+  - **MEDIQA** (clinical summarization benchmarks)  
+- Evaluation Metrics: **ROUGE**, **BERTScore**, and **clinician factuality checks** to ensure accuracy.  
 
 ### b) Privacy & De-identification
-- **HIPAA** defines 18 Protected Health Information (PHI) identifiers.  
-- De-identification methods: **Safe Harbor** (remove 18 identifiers) and **Expert Determination**.  
-- **Text de-ID tools:** i2b2/n2c2 datasets, Microsoft **Presidio**, rule-based + ML NER.  
-- **Image de-ID:** DICOM PS3.15 Annex E profiles for removing PHI from headers and burned-in text.  
+- **HIPAA** requires removal of 18 PHI (Protected Health Information) identifiers.  
+- Two main de-identification approaches:  
+  - **Safe Harbor** → rule-based removal of identifiers.  
+  - **Expert Determination** → expert validates anonymization process.  
+- Tools & Methods:  
+  - **Text de-ID:** i2b2/n2c2 datasets, Microsoft **Presidio**, NER-based pipelines.  
+  - **Image de-ID:** **pydicom** tools + DICOM PS3.15 Annex E for metadata cleanup.  
+  - Hybrid approach (rules + ML) offers better balance between safety and accuracy.  
 
 ### c) Traceability & Interoperability
-- **FHIR** (Fast Healthcare Interoperability Resources) provides **DocumentReference** and **Media** resources to keep links back to original files.  
-- Ensures transparency and clinical trust in AI-generated summaries.  
+- **FHIR (Fast Healthcare Interoperability Resources)** provides standards to keep links back to original files.  
+  - **DocumentReference** and **Media** resources ensure traceability.  
+- Doctors must be able to cross-check every summary with its source for clinical trust.  
 
 ---
 
-## 3. References (For Now )
-- HIPAA De-identification Guidance – HHS: https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html  
-- DICOM PS3.15 (De-identification Profiles): https://dicom.nema.org/medical/dicom/current/output/html/part15.html  
-- i2b2 De-identification Challenge (PHI removal benchmark): https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/  
-- Microsoft Presidio (open-source de-identification tool): https://github.com/microsoft/presidio  
-- HL7 FHIR Overview: https://www.hl7.org/fhir/overview.html  
-- Radiology Report Summarization (MIMIC-CXR datasets): https://physionet.org/content/mimic-cxr/  
-- Clinical Summarization Surveys (JMIR, Nature Digital Medicine)  
+## 3. References (Current Sources)
+- [HIPAA De-identification Guidance – HHS](https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html)  
+- [DICOM PS3.15 (De-identification Profiles)](https://dicom.nema.org/medical/dicom/current/output/html/part15.html)  
+- [i2b2 De-identification Challenge (PHI benchmark)](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/)  
+- [Microsoft Presidio (open-source de-ID tool)](https://github.com/microsoft/presidio)  
+- [HL7 FHIR Overview](https://www.hl7.org/fhir/overview.html)  
+- [MIMIC-CXR Radiology Dataset](https://physionet.org/content/mimic-cxr/)  
+- [Clinical Summarization Surveys – JMIR, Nature Digital Medicine]  
 
 ---
 
-## 4. Open Questions
-- Which summarization model (BioBART, ClinicalBERT, or LLM like GPT-4/MedPaLM) is most suitable for multi-source input?  
-- How to reliably evaluate factual correctness of summaries?  
-- What toolchain is best for de-identification: purely rule-based vs hybrid ML (e.g., Presidio + NER)?  
-- How to design UI so Doctors can trace every summary point back to the original source?  
+## 4. Open Research Questions
+- Which summarization model works best for **multi-source input** (BioBART vs ClinicalBERT vs GPT-4/MedPaLM)?  
+- How to design **factual correctness checks** so summaries remain clinically valid?  
+- Which pipeline is most effective for de-identification: **rule-based only** or **hybrid ML + rules**?  
+- How should the **UI/UX** highlight traceability (e.g., clickable references for every summary line)?  
 
 ---
 
 ## 5. Next Steps
-- Gather more papers on **clinical summarization benchmarks (2023–2025)**.  
-- Explore **open-source de-identification pipelines** and test them on sample notes.  
-- Review **FHIR DocumentReference examples** for linking originals.  
-- Build daily logs to track findings and commit them to GitHub.  
+- Collect latest (2023–2025) research papers on **clinical summarization benchmarks**.  
+- Test **open-source de-identification tools** like Presidio on dummy medical notes.  
+- Experiment with **FHIR DocumentReference** for linking original files.  
+- Keep a **daily/weekly research log** and commit updates to GitHub Wiki.  
+
+---
+
+*Last updated: 09/27/2025*  
