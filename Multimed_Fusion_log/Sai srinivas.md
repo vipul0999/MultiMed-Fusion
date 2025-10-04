@@ -880,4 +880,115 @@ It ensures **traceability** between what the system is expected to do (requireme
 
 ---
 
+# MultiMed Fusion – Use Case Daily Log
+
+---
+
+### **Daily Log: October 3 , 2025**
+
+## **List of Use Cases**
+
+---
+
+### **UC-01: User Authentication & Access**
+- **Actors:** Doctor, Patient, System  
+- **Description:** A user signs up or logs in with role-based access.  
+- **Precondition:** User provides valid credentials.  
+- **Postcondition:** User is redirected to the appropriate dashboard.  
+
+---
+
+### **UC-02: File Upload**
+- **Actors:** Doctor, Patient  
+- **Description:** Upload medical files (PDF, image, audio) via web or mobile.  
+- **Precondition:** User is logged in.  
+- **Postcondition:** File is stored and available for processing.  
+
+---
+
+### **UC-03: Data Anonymization**
+- **Actors:** Patient, System  
+- **Description:** System removes personally identifiable information (PHI).  
+- **Precondition:** File uploaded.  
+- **Postcondition:** Anonymized file stored securely.  
+
+---
+
+### **UC-04: AI Summary Generation**
+- **Actors:** Doctor, System  
+- **Description:** System generates a summary from multiple uploaded files.  
+- **Precondition:** Files are uploaded and processed.  
+- **Postcondition:** Doctor sees unified AI-generated summary with links to originals.  
+
+---
+
+### **UC-05: Doctor Dashboard**
+- **Actors:** Doctor  
+- **Description:** Doctor views summaries, expandable details, timeline view.  
+- **Precondition:** Summaries are available.  
+- **Postcondition:** Doctor reviews patient information efficiently.  
+
+---
+
+### **UC-06: Patient Dashboard**
+- **Actors:** Patient  
+- **Description:** Patient views their uploaded files and simplified summaries.  
+- **Precondition:** Patient account exists with files uploaded.  
+- **Postcondition:** Patient accesses history and summaries.  
+
+---
+
+### **UC-07: Notifications & Alerts**
+- **Actors:** Doctor, Patient, System  
+- **Description:** System sends alerts for new summaries, urgent findings, and pending reviews.  
+- **Precondition:** System processes files or detects events.  
+- **Postcondition:** User receives timely notification.  
+
+---
+
+### **UC-08: Search & Filtering**
+- **Actors:** Doctor, Patient  
+- **Description:** Search across files using keywords, filters, or natural language queries.  
+- **Precondition:** Files and summaries exist in the system.  
+- **Postcondition:** User retrieves relevant search results.  
+
+---
+
+### **UC-09: Collaboration & Communication**
+- **Actors:** Doctor, Patient  
+- **Description:** Secure chat, notes sharing, and annotation tools for medical images.  
+- **Precondition:** Users logged in with permissions.  
+- **Postcondition:** Notes/annotations saved and shared securely.  
+
+---
+
+### **UC-10: Settings & Preferences**
+- **Actors:** Doctor, Patient  
+- **Description:** Manage profile, language, theme, notification preferences.  
+- **Precondition:** User is authenticated.  
+- **Postcondition:** Settings saved and applied to UI.  
+
+---
+
+### **UC-11: Mobile-Specific Features**
+- **Actors:** Doctor, Patient  
+- **Description:** Biometric login, offline mode, mobile-optimized summary cards.  
+- **Precondition:** User has mobile app.  
+- **Postcondition:** User securely accesses features on mobile.  
+
+---
+
+### **UC-12: Admin & Security (Future)**
+- **Actors:** Admin, System  
+- **Description:** Admin views audit logs and manages user access.  
+- **Precondition:** Admin role required.  
+- **Postcondition:** Compliance and security verified.  
+
+---
+
+## **Purpose**
+This daily log captures the **complete list of use cases** mapped to the functional requirements of MultiMed Fusion.  
+It ensures **traceability** and provides a foundation for building **UML Use Case Diagrams**.  
+
+---
 
