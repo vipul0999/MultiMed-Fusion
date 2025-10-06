@@ -50,6 +50,26 @@ if __name__ == "__main__":
     patient_files = ["P001_record.json", "P002_record.json"]
     merge_patient_records(patient_files, "all_patient_records.json")
 
+```
+## Patient Record Merger with Placeholder Validation
+
+Example Output (all_patient_records.json)
+
+[
+    {
+        "patient_id": "P001",
+        "name": "John Doe",
+        "age": 45,
+        "diagnosis": "Hypertension"
+    },
+    {
+        "patient_id": "P002",
+        "name": "Jane Smith",
+        "age": 38,
+        "diagnosis": "Diabetes"
+    }
+]
+
 
 
 
