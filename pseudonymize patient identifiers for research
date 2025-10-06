@@ -1,0 +1,22 @@
+# pseudonymize patient identifiers for research
+
+``` Python
+import hmac, hashlib
+
+def make_pid(value, secret, prefix="PID", length=12):
+    if not value:
+        return None
+    d = hmac.new(secret.encode(), str(value).encode(), hashlib.sha256).hexdigest().upper()
+    return f"{prefix}-{d[:length]}"
+
+def pseudonymize_record(record, secret, keys=("patient_id","patientId","mrn","id"), out_key="pid_pseudo"):
+    r = dict(record or {})
+    v = next((r[k] for k in keys if r.get(k)), None)
+    r[out_key] = make_pid(v, secret) if v else None
+    return r
+
+if __name__ == "__main__":
+    rec = {"patientId": "P001", "mrn": "7755"}
+    print(pseudonymize_record(rec, "supersecret"))
+
+
