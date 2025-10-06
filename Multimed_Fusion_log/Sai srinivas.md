@@ -991,4 +991,96 @@ This daily log captures the **complete list of use cases** mapped to the functio
 It ensures **traceability** and provides a foundation for building **UML Use Case Diagrams**.  
 
 ---
+# MultiMed Fusion – Data Management Plan  
+### **Daily Commit Log: October 5, 2025**
+
+---
+
+## **1. Data Summary**
+
+The MultiMed Fusion platform will manage medical information uploaded by doctors and patients.  
+This data will include text files, lab reports, images, and audio notes — all anonymized and stored securely.
+
+Below is a simplified, human-friendly summary of the data to be stored (from the ER Diagram):
+
+| **Entity** | **Description** | **Key Fields** |
+|-------------|-----------------|----------------|
+| **User** | Stores doctor and patient login information | user_id, name, email, role, password_hash, created_at |
+| **Doctor** | Stores doctor-specific information | doctor_id, user_id (FK), specialization, hospital_affiliation |
+| **Patient** | Stores patient profile and demographics | patient_id, user_id (FK), dob, gender, contact_info, medical_history |
+| **File** | Stores uploaded medical files | file_id, patient_id (FK), file_name, file_type, upload_path, uploaded_by, uploaded_at |
+| **Anonymization** | Tracks PHI removal and data privacy | anon_id, file_id (FK), status, removed_fields, verified_by |
+| **Summary** | AI-generated medical summaries | summary_id, patient_id (FK), doctor_id (FK), summary_text, created_at |
+| **Notification** | Stores alerts sent to users | notif_id, user_id (FK), type, message, status, created_at |
+| **Chat / Notes** | Manages collaboration messages between doctors/patients | chat_id, sender_id, receiver_id, message, timestamp |
+| **Audit Log** | Records all security events | log_id, user_id (FK), action, timestamp, details |
+
+---
+
+## **2. ER Diagram Overview**
+
+**Description:**  
+The system follows a **relational database model (PostgreSQL / MySQL)**, linking key entities (Users, Patients, Doctors, Files, Summaries, Notifications, Logs) through primary and foreign keys.
+
+**Core Relationships:**
+- A **User** can be either a Doctor or a Patient (1–1 relationship).  
+- A **Patient** can have multiple **Files** and **Summaries** (1–M).  
+- A **Doctor** can create multiple **Summaries** for different Patients (1–M).  
+- Each **File** has one **Anonymization record** (1–1).  
+- A **User** can receive many **Notifications** (1–M).  
+- All user activities are tracked through **Audit Logs**.
+
+---
+
+## **3. Data Security Plan**
+
+### **Access Restriction**
+- Role-based access control (RBAC):  
+  - Doctors can view and summarize patient files assigned to them.  
+  - Patients can view only their own anonymized data.  
+  - Admins can view system logs but not medical content.  
+- Access permissions validated through API middleware before every database request.
+
+### **Encryption**
+- All user credentials stored using **bcrypt password hashing**.  
+- Sensitive data (patient details, files, summaries) encrypted at rest using **AES-256**.  
+- All communication (frontend ↔ backend ↔ storage) via **HTTPS (TLS 1.2+)**.  
+- File storage (S3 or similar) configured with encryption and signed URLs.
+
+### **Data Backup & Recovery**
+- Daily automated backups of all databases.  
+- Redundant file storage for recovery from system failures.  
+- Audit trails for every data modification.
+
+---
+
+## **4. Mapping Functional Requirements to Data Storage**
+
+| **Functional Requirement** | **Related Data Entities** | **Storage Description** |
+|-----------------------------|----------------------------|--------------------------|
+| User Authentication & Access | User | Stores credentials, roles, timestamps |
+| File Upload & Management | File, Patient, Doctor | Stores uploaded file metadata, linked to patient/doctor |
+| Data Anonymization | Anonymization, File | Tracks PHI removal and anonymization status |
+| AI Summary Generation | Summary, File | Stores generated text summaries linked to original data |
+| Doctor Dashboard | Summary, Patient | Displays summaries and links to patient data |
+| Patient Dashboard | Patient, File, Summary | Displays history and anonymization info |
+| Notifications & Alerts | Notification | Stores messages and alerts for users |
+| Collaboration & Chat | Chat / Notes, User | Manages secure messaging between doctors and patients |
+| Security & Compliance | Audit Log, User | Records all actions and changes for accountability |
+
+---
+
+## **5. Summary**
+
+This **Data Management Plan** defines how MultiMed Fusion will:
+- Collect, store, and secure sensitive medical information.
+- Maintain privacy through anonymization and encryption.
+- Ensure traceability between stored data and system functionalities.
+
+This document serves as the **foundation for database design and implementation** during the next development phase.
+
+---
+
+
+
 
