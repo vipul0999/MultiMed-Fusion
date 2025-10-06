@@ -1,6 +1,7 @@
 # pseudonymize patient identifiers for research
 
-``` Python
+```Python
+
 import hmac, hashlib
 
 def make_pid(value, secret, prefix="PID", length=12):
