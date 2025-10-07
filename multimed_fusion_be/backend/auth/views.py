@@ -48,3 +48,36 @@ class LoginView(APIView):
             }, status=status.HTTP_200_OK)
 
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+
+class UpdateUserDetailsView(APIView):
+    """
+    API endpoint to update user details.
+    Only authenticated users can update their own profile.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [JSONParser]
+
+    def put(self, request, *args, **kwargs):
+        user = request.user  # current authenticated user
+
+        data = request.data
+        allowed_fields = ['first_name', 'last_name', 'email']
+
+        # Update allowed fields only
+        for field in allowed_fields:
+            if field in data:
+                setattr(user, field, data[field])
+
+        user.save()
+
+        return Response({
+            "message": "User details updated successfully.",
+            "user": {
+                "username": user.username,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "email": user.email,
+            }
+        }, status=status.HTTP_200_OK)
