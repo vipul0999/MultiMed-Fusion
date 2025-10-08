@@ -1,8 +1,8 @@
 # pseudonymize patient identifiers for research
 
-```Python
+``` Python
 
-import hmac, hashlib
+import hmac, hashlib, json
 
 def make_pid(value, secret, prefix="PID", length=12):
     if not value:
@@ -16,8 +16,24 @@ def pseudonymize_record(record, secret, keys=("patient_id","patientId","mrn","id
     r[out_key] = make_pid(v, secret) if v else None
     return r
 
+
+def pseudonymize_file(input_file, output_file, secret):
+    """
+    Read JSON file (list of patient records), pseudonymize each, and save results.
+    Useful for batch research data preparation.
+    """
+    with open(input_file, "r") as f:
+        data = json.load(f)
+
+    results = [pseudonymize_record(rec, secret) for rec in data]
+    
+    with open(output_file, "w") as f:
+        json.dump(results, f, indent=4)
+    
+    print(f"Pseudonymized {len(results)} records -> {output_file}")
+    return results
+
 if __name__ == "__main__":
     rec = {"patientId": "P001", "mrn": "7755"}
     print(pseudonymize_record(rec, "supersecret"))
-
-
+    
