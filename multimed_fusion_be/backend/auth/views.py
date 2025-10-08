@@ -81,3 +81,35 @@ class UpdateUserDetailsView(APIView):
                 "email": user.email,
             }
         }, status=status.HTTP_200_OK)
+
+
+
+class DeleteUserView(APIView):
+    """
+    API endpoint to delete a user by ID.
+    Only accessible to authenticated users (you can modify as needed).
+    """
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, user_id):
+        try:
+            user = User.objects.get(id=user_id)
+            
+            # Optional: prevent user from deleting others
+            if request.user != user and not request.user.is_staff:
+                return Response(
+                    {"error": "You are not authorized to delete this user."},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            
+            user.delete()
+            return Response(
+                {"message": f"User with ID {user_id} deleted successfully."},
+                status=status.HTTP_200_OK
+            )
+        
+        except User.DoesNotExist:
+            return Response(
+                {"error": f"User with ID {user_id} does not exist."},
+                status=status.HTTP_404_NOT_FOUND
+            )
