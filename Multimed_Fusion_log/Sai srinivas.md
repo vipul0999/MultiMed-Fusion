@@ -1083,4 +1083,107 @@ This document serves as the **foundation for database design and implementation*
 
 
 
+# MultiMed Fusion – Non-Functional Requirements Daily Log
+
+---
+
+### **Daily Log: October 8, 2025**
+
+## **Purpose**
+The goal of this daily log is to describe the **Non-Functional Requirements I-2 (NFRs)** that define how the MultiMed Fusion system should perform, operate, and maintain quality.  
+While functional requirements specify *what* the system does, these NFRs define *how well* it performs those functions.
+
+---
+
+## **1. Performance Requirements**
+- The system should process uploaded medical files and generate AI summaries within **5 seconds** for average file sizes (≤ 25MB).  
+- The web and mobile dashboards must load in **under 3 seconds** under normal load.  
+- The backend should handle **up to 10 concurrent summary requests per doctor** without latency above 2 seconds.  
+- The database must execute queries and return results within **1 second** for 95% of requests.  
+- Upload and download operations must maintain stable performance across different file types (PDF, image, audio).  
+
+---
+
+## **2. Scalability Requirements**
+- The architecture must support scaling from **hundreds to thousands of users** with minimal reconfiguration.  
+- Horizontal scaling of the backend (using FastAPI/Django) should be supported through containerization (Docker, Kubernetes).  
+- File storage should be **cloud-based (AWS S3 or equivalent)** to handle increasing medical data.  
+- AI summary generation services should scale independently of other modules using microservice design.  
+
+---
+
+## **3. Security Requirements**
+- All data transmission shall occur over **HTTPS (TLS 1.2 or higher)**.  
+- Passwords must be stored using **bcrypt or Argon2 hashing**.  
+- Patient data and medical records shall be **encrypted at rest (AES-256)**.  
+- Sessions should expire automatically after **15 minutes of inactivity**.  
+- Role-based access control (RBAC) shall restrict data visibility based on user type (Doctor, Patient, Admin).  
+- Multi-factor authentication (MFA) shall be implemented for doctors and admins.  
+
+---
+
+## **4. Privacy & Compliance Requirements**
+- The system must comply with **HIPAA-like privacy standards** for data protection.  
+- Personal Health Information (PHI) must be anonymized before storage or processing.  
+- Access to patient data must require explicit consent (digital approval).  
+- Data logs and audit trails must be maintained for accountability.  
+
+---
+
+## **5. Usability Requirements**
+- The system interface should be **intuitive, clean, and user-friendly** for non-technical users.  
+- The design shall maintain **consistency across web and mobile platforms**.  
+- Accessibility features:  
+  - Support for screen readers (ARIA labels).  
+  - Adjustable font size and high-contrast themes.  
+  - Keyboard navigation support.  
+- The app shall support **multi-language localization (English, Spanish)** in future updates.  
+
+---
+
+## **6. Reliability & Availability Requirements**
+- The system shall achieve **99.9% uptime** during active deployment.  
+- It must gracefully handle network interruptions (offline caching for mobile users).  
+- Auto-retry mechanisms should ensure file uploads resume after disconnection.  
+- Backup services should run daily, ensuring recovery within **30 minutes** in case of data loss.  
+- Any failed service (e.g., summary generation) should be automatically restarted by a monitoring tool.  
+
+---
+
+## **7. Maintainability Requirements**
+- The project shall follow **modular and component-based architecture**.  
+- Code must adhere to **PEP8 (Python)** and **ESLint (React)** style guidelines.  
+- Documentation must be updated with each major commit in the GitHub Wiki.  
+- Unit and integration tests should cover at least **70% of all modules**.  
+- CI/CD pipelines will automate testing and deployment (GitHub Actions).  
+
+---
+
+## **8. Portability Requirements**
+- The system should be deployable on multiple environments (AWS, Azure, GCP, local).  
+- Docker containers will be used to ensure portability and consistency.  
+- The frontend must work on **major browsers** (Chrome, Firefox, Safari, Edge).  
+- The mobile app must support **Android 11+** and **iOS 15+**.  
+
+---
+
+## **9. Interoperability Requirements**
+- The system must integrate smoothly with third-party AI and transcription APIs.  
+- Export formats must include **PDF**, **TXT**, and **JSON** for data exchange.  
+- RESTful APIs should follow **OpenAPI standards** for future scalability and interoperability.  
+
+---
+
+## **10. Auditability & Logging**
+- Every critical action (upload, summary creation, data deletion) must be logged.  
+- Logs should include user ID, timestamp, and activity type.  
+- Logs will be stored securely and monitored for suspicious activity.  
+- Admin users can view system audit trails via the Audit Dashboard.  
+
+---
+
+### **Conclusion**
+These **Non-Functional Requirements** ensure that MultiMed Fusion is not only feature-complete but also **secure, fast, maintainable, scalable, and compliant** with medical data standards.  
+They set clear expectations for performance and quality throughout the system’s lifecycle.  
+
 
