@@ -1186,4 +1186,152 @@ While functional requirements specify *what* the system does, these NFRs define 
 These **Non-Functional Requirements** ensure that MultiMed Fusion is not only feature-complete but also **secure, fast, maintainable, scalable, and compliant** with medical data standards.  
 They set clear expectations for performance and quality throughout the system’s lifecycle.  
 
+# MultiMed Fusion – iOS Application Development Methodology Log
+
+---
+
+### **Daily Log: October 10, 2025**
+
+
+
+## **1. Planning & Setup**
+- **Tasks:**
+  - Installed and configured **Xcode 16.0** environment.  
+  - Created a new project named `MultiMedFusion_iOS` using the **Storyboard** interface and **Swift** language.  
+  - Set the **minimum deployment target to iOS 15.0** for compatibility.  
+  - Defined project folder structure:  
+    - `Model/` – Data models  
+    - `View/` – Storyboard UI layouts  
+    - `Controller/` – ViewControllers  
+    - `Services/` – API calls, authentication, and AI summary services  
+
+- **Purpose:**  
+  To establish a clean and scalable base structure for development.
+
+---
+
+## **2. UI/UX Design Phase**
+- **Tasks:**
+  - Designed main screens in Storyboard:  
+    - Login Screen  
+    - Signup Screen  
+    - Dashboard (Doctor & Patient Views)  
+    - File Upload Screen  
+    - Summary View Screen  
+    - Settings Screen  
+  - Used **Auto Layout** and **Stack Views** to ensure responsiveness on different devices.  
+  - Applied consistent **color palette and font hierarchy** following Apple’s Human Interface Guidelines.  
+
+- **Purpose:**  
+  To create a clean, accessible, and user-friendly interface.
+
+---
+
+## **3. Model Development**
+- **Tasks:**
+  - Defined Swift data models:  
+    - `User`, `Patient`, `Doctor`, `File`, `Summary`, and `Notification`.  
+  - Used `Codable` protocol for JSON encoding/decoding with API integration.  
+  - Established sample mock data for testing during early stages.  
+
+- **Purpose:**  
+  To handle structured data efficiently within the app.
+
+---
+
+## **4. Controller & Business Logic Implementation**
+- **Tasks:**
+  - Created ViewControllers:  
+    - `LoginViewController`, `SignupViewController`, `DashboardViewController`, `UploadViewController`, `SummaryViewController`, `SettingsViewController`.  
+  - Connected **IBOutlets** and **IBActions** between UI and code.  
+  - Implemented local data validation and navigation between screens using `UINavigationController`.  
+  - Integrated mock backend responses for AI summaries.  
+
+- **Purpose:**  
+  To implement navigation flow and app logic based on the functional requirements.
+
+---
+
+## **5. API Integration**
+- **Tasks:**
+  - Created **APIService.swift** to handle REST API communication (with Django/FastAPI backend).  
+  - Configured network calls using **URLSession**.  
+  - Managed authentication tokens for secure data requests.  
+  - Implemented upload and summary endpoints for testing (mock mode initially).  
+
+- **Purpose:**  
+  To connect the mobile frontend with backend services securely.
+
+---
+
+## **6. Data Persistence**
+- **Tasks:**
+  - Integrated **Core Data** for offline storage of summaries and uploaded file metadata.  
+  - Configured local caching to access summaries when offline.  
+  - Added data synchronization when the network is restored.  
+
+- **Purpose:**  
+  To ensure reliability and smooth user experience even in offline mode.
+
+---
+
+## **7. Security Implementation**
+- **Tasks:**
+  - Enabled **Face ID / Touch ID** authentication using `LocalAuthentication` framework.  
+  - Secured API keys and tokens using **Keychain Services**.  
+  - Implemented session timeout and logout after inactivity.  
+  - Ensured all communication uses **HTTPS with TLS encryption**.  
+
+- **Purpose:**  
+  To guarantee user privacy and data protection.
+
+---
+
+## **8. Testing & Quality Assurance**
+- **Tasks:**
+  - Conducted **unit testing** for models and controllers using **XCTest**.  
+  - Performed **UI testing** using Xcode’s automated test recorder.  
+  - Verified performance metrics (loading times, memory usage).  
+  - Conducted beta testing on TestFlight with selected users.  
+
+- **Purpose:**  
+  To ensure app reliability and usability before release.
+
+---
+
+## **9. Deployment & Distribution**
+- **Tasks:**
+  - Configured **App IDs, Certificates, and Provisioning Profiles** in Apple Developer Portal.  
+  - Prepared build for release using **Xcode Organizer**.  
+  - Deployed internal beta through **TestFlight**.  
+  - Planned public release submission to **App Store Connect** after mentor review.  
+
+- **Purpose:**  
+  To make the app ready for end-user testing and production deployment.
+
+---
+
+## **10. Maintenance & Future Improvements**
+- **Planned Enhancements:**
+  - Real AI summary integration via FastAPI backend.  
+  - Multi-language localization (English/Spanish).  
+  - Enhanced analytics for user engagement.  
+  - Dark mode and accessibility improvements.  
+
+- **Purpose:**  
+  To ensure the app evolves with user feedback and remains maintainable over time.
+
+---
+
+### **Conclusion**
+This daily log documents the **entire method of developing the MultiMed Fusion iOS application**, following a structured **agile, MVC-based workflow** using **Swift, Xcode, and Core Data**.  
+Each phase ensures high quality, security, and usability, aligning with both **functional and non-functional requirements** of the project.
+
+---
+
+### **Commit Message**
+> **Commit:** Added daily log describing iOS app development method and workflow.  
+> **Author:** MultiMed Fusion Dev Team  
+> **Date:** September 16, 2025  
+> **Purpose:** Define structured approach for iOS app development using Swift and Xcode.
 
