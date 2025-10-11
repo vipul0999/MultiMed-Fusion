@@ -39,17 +39,16 @@ This helps:
 
 ---
 
-## ✨ New Features (Latest Updates)
+## ✨ New Features (This Week’s Updates)
 
-- 📂 **File Versioning** → Keeps old versions of uploaded files for safety and compliance.  
-- 🔎 **Search Functionality** → Doctors can search summaries by **keywords or dates**.  
-- 📧 **Basic Notifications** → Email alerts when summaries are ready (toggle via `.env`).  
-- ❤️ **Health Check Endpoint** → `/health` endpoint to verify if the backend is running.  
-- 🔐 **Access Control** → Only authorized users can view patient data.  
-- 🧪 **Testing Improvements** → Automated test coverage reports integrated with CI.  
-- 📊 **System Monitoring** → `/metrics` endpoint to track API health and performance.  
-- 🌍 **Multi-Language Support (basic)** → Default summary language can be set in `.env`.  
-- ⚡ **Async Task Toggle** → Added option to enable/disable background tasks via `.env`.  
+- 🧩 **Anonymization & Validation Modules** → Added regex and validation functions to automatically mask names, emails, and phone numbers in patient data.  
+- 🧠 **Enhanced AI Summarization Pipeline** → Optimized text extraction, transcription, and embedding generation for improved accuracy.  
+- 🧾 **Developer Guide Added** → A complete setup and contribution guide (`DEVELOPER_GUIDE.md`) for onboarding new contributors.  
+- 🧪 **Testing Guide Created** → Detailed testing steps with **unit tests, integration tests, and Postman collection** added to `TESTING_GUIDE.md`.  
+- 📄 **Non-Functional Requirements (Iteration 2)** → Added documentation on performance, security, reliability, and compliance requirements.  
+- 🗂️ **Research Notes** → Added summarized findings on privacy, interoperability, and clinical summarization techniques.  
+- 🧰 **Environment Configuration Update** → Simplified `.env.sample` with clearer variable grouping and toggles for anonymization and async tasks.  
+- ⚙️ **Patient Record Merger Script** → Introduced `merge_patient_records.py` for combining multiple patient records with validation and logging.  
 
 ---
 
@@ -68,6 +67,25 @@ To better understand the system, we created diagrams:
 
 ---
 
+## 🧪 Testing Overview
+
+- Unit and Integration testing via **PyTest**.  
+- API validation with **Postman**.  
+- Code coverage tracking in GitHub Actions.  
+- Redaction and validation modules now include test cases for PII detection.  
+- Test results are automatically logged in `/tests/reports/`.  
+
+---
+
+## 📚 Developer Documentation
+
+- **Developer Guide** → [DEVELOPER_GUIDE.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Developer-Guide)  
+- **Testing Guide** → [TESTING_GUIDE.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Testing-Guide)  
+- **Research Notes** → [RESEARCH_NOTES.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Research-Notes)  
+- **Non-Functional Requirements** → [NON_FUNCTIONAL_REQUIREMENTS.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Non-Functional-Requirements)  
+
+---
+
 ## 📌 Future Enhancements
 
 - Background processing with **Celery + Redis** for heavy AI tasks.  
@@ -75,7 +93,8 @@ To better understand the system, we created diagrams:
 - Export summaries as **PDF/CSV** directly from the dashboard.  
 - Real-time notifications via **WebSockets**.  
 - Integration with **hospital EHR systems**.  
+- Integration of **confidence scores** in AI-generated summaries.  
 
 ---
 
-*Last updated: 10/01/2025*
+*Last updated: 10/10/2025*
