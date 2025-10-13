@@ -1335,3 +1335,109 @@ Each phase ensures high quality, security, and usability, aligning with both **f
 > **Date:** September 16, 2025  
 > **Purpose:** Define structured approach for iOS app development using Swift and Xcode.
 
+---
+
+### **Daily Log: October 13 , 2025**
+
+## **Purpose**
+This Data Management Plan defines **what data will be stored, how it will be structured, and how it will be secured** within the MultiMed Fusion system.  
+It aligns with the project’s goal of combining medical files (PDFs, images, and audio) into AI-generated summaries while ensuring patient privacy, data integrity, and accessibility.
+
+---
+
+## **1. Summary of Data to be Stored**
+
+The MultiMed Fusion system will store **three main categories of data**:  
+1. **User & Access Data** – authentication, roles, and profiles.  
+2. **Medical Data** – uploaded files, anonymized information, and AI summaries.  
+3. **System Data** – notifications, logs, and collaboration records.
+
+### **Entities and Fields (Human-Friendly Summary)**
+
+| **Entity** | **Description** | **Key Fields / Attributes** |
+|-------------|-----------------|------------------------------|
+| **User** | Stores account details for doctors, patients, and admins | `user_id`, `name`, `email`, `password_hash`, `role`, `created_at` |
+| **Doctor** | Professional details linked to user | `doctor_id`, `user_id (FK)`, `specialization`, `hospital_affiliation` |
+| **Patient** | Patient profile and demographics | `patient_id`, `user_id (FK)`, `dob`, `gender`, `contact_info`, `medical_history` |
+| **File** | Uploaded medical files (PDFs, images, audio) | `file_id`, `patient_id (FK)`, `file_name`, `file_type`, `storage_path`, `upload_timestamp`, `uploaded_by` |
+| **Anonymization** | Tracks privacy and PHI removal | `anon_id`, `file_id (FK)`, `status`, `removed_fields`, `verified_by` |
+| **Summary** | AI-generated medical summaries | `summary_id`, `patient_id (FK)`, `doctor_id (FK)`, `summary_text`, `created_at`, `linked_files` |
+| **Notification** | Alerts sent to users | `notif_id`, `user_id (FK)`, `message`, `type`, `status`, `created_at` |
+| **Chat / Notes** | Secure communication between users | `chat_id`, `sender_id`, `receiver_id`, `message_text`, `timestamp` |
+| **Audit Log** | Tracks all security and system events | `log_id`, `user_id (FK)`, `action`, `timestamp`, `ip_address`, `details` |
+
+---
+
+## **2. ER Diagram (Relational Data Model)**
+
+### **Diagram Description (for a Non-Technical Reader):**
+- **Users** can be **Doctors** or **Patients** (1:1).  
+- **Patients** can have multiple **Files** and **Summaries** (1:Many).  
+- **Doctors** can generate multiple **Summaries** for different Patients (1:Many).  
+- **Each File** is linked to one **Anonymization record** (1:1).  
+- **Users** receive multiple **Notifications** (1:Many).  
+- **All actions** (uploads, deletions, updates) are logged in **Audit Logs**.  
+- **Chats** record conversations between doctors and patients.  
+
+
+
+---
+
+## **3. Initial Data Security Plan**
+
+Security is critical due to the sensitive nature of medical data.  
+Below are the planned strategies for securing data within MultiMed Fusion.
+
+### **A. Access Restriction**
+- **Role-Based Access Control (RBAC):**
+  - **Doctor:** Can view and summarize assigned patient data.  
+  - **Patient:** Can view only their anonymized files and summaries.  
+  - **Admin:** Can monitor logs but cannot view medical data.  
+- Access validated through JWT tokens and backend middleware (FastAPI/Django).
+
+### **B. Encryption**
+- **Data in Transit:** All communications use **HTTPS (TLS 1.3)**.  
+- **Data at Rest:** Stored in an **encrypted cloud database (PostgreSQL with AES-256 encryption)**.  
+- **File Storage:** Stored in **S3-compatible storage** with encrypted access URLs and signed tokens.  
+- **Credentials:** Hashed using **bcrypt**; no plain-text passwords stored.  
+
+### **C. Privacy and Compliance**
+- Compliant with **HIPAA-style data handling** standards.  
+- All PHI (Patient Health Information) removed before vectorization or storage.  
+- Anonymization process verified through the **Anonymization table** with status tracking.  
+- Audit trails record all data access and modification activities.  
+
+### **D. Backup and Recovery**
+- Automated daily backups of the database and files.  
+- Redundant cloud storage for recovery in case of system failures.  
+- Version control for summaries to track history and avoid data loss.  
+
+---
+
+## **4. Mapping of Functional Requirements to Data Storage**
+
+| **Functional Requirement** | **Relevant Data Entities** | **Storage Explanation** |
+|-----------------------------|-----------------------------|--------------------------|
+| **User Authentication & Access** | `User`, `Doctor`, `Patient` | Stores login credentials, roles, and access permissions. |
+| **File Upload & Management** | `File`, `Patient`, `Doctor` | Stores uploaded medical files and metadata linked to users. |
+| **Data Anonymization** | `Anonymization`, `File` | Tracks anonymization process and removed sensitive fields. |
+| **AI Summary Generation** | `Summary`, `File` | Stores AI-generated summaries mapped to original medical files. |
+| **Doctor Dashboard** | `Summary`, `Patient` | Fetches summaries and linked patient data for visualization. |
+| **Patient Dashboard** | `Patient`, `File`, `Summary` | Displays patient’s anonymized files and AI summaries. |
+| **Notifications & Alerts** | `Notification` | Stores system and user alerts about new summaries or uploads. |
+| **Collaboration & Chat** | `Chat / Notes`, `User` | Manages secure communication between doctors and patients. |
+| **Security & Audit Logs** | `Audit Log`, `User` | Records all user actions and system events for traceability. |
+
+---
+
+## **5. Future Data Enhancements**
+- Integrate **vector embeddings storage** for AI-driven search and summarization.  
+- Add **image metadata extraction** for radiology or lab image indexing.  
+- Implement **token-based access sharing** for doctors to share temporary data views.  
+- Enable **data export** in standardized formats (FHIR / HL7).  
+
+---
+---
+
+
+
