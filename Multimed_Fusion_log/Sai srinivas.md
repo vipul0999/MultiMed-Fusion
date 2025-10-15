@@ -1439,5 +1439,186 @@ Below are the planned strategies for securing data within MultiMed Fusion.
 ---
 ---
 
+# MultiMed Fusion – Comprehensive Data Management Plan
+
+---
+
+### **Daily Log: October 15 , 2025**
+
+## **Objective**
+To define a **complete Data Management Plan (DMP)** for the MultiMed Fusion system, outlining how data will be **collected, stored, secured, managed, and mapped** to the system’s functional requirements.  
+This ensures that the system is efficient, secure, compliant, and scalable as it handles sensitive multi-modal medical data.
+
+---
+
+## **1. Overview**
+
+**MultiMed Fusion** collects diverse data types such as:  
+- **Structured data:** User profiles, roles, permissions.  
+- **Unstructured data:** Lab reports, medical images, audio notes.  
+- **AI-generated summaries:** Textual outputs from processed data.  
+
+This DMP establishes policies for:
+1. Data structure and relationships  
+2. Storage method (SQL + NoSQL hybrid)  
+3. Security, privacy, and encryption  
+4. Backup, recovery, and lifecycle management  
+5. Mapping between stored data and functional requirements  
+
+---
+
+## **2. Data Categories**
+
+| **Category** | **Description** | **Examples** |
+|---------------|-----------------|---------------|
+| **User Data** | Information for authentication and profiles | Name, Email, Role, Credentials |
+| **Patient Data** | Demographics and health-related records | DOB, Gender, History, Contact |
+| **Medical Files** | Uploaded files in multiple formats | PDFs, DICOM images, audio |
+| **AI Summaries** | Processed summaries from uploaded data | Text summaries, linked file references |
+| **Anonymization Data** | Records of removed PHI | File status, removed fields, verification |
+| **System Logs & Notifications** | Operational and event logs | Login, upload, access, alerts |
+
+---
+
+## **3. Data Model Summary**
+
+### **Relational (SQL) Entities**
+Used for **structured and relational data**, such as users, permissions, logs, and AI summaries.
+
+| **Entity** | **Key Fields** | **Purpose** |
+|-------------|----------------|--------------|
+| **User** | user_id, name, email, password_hash, role | Stores authentication data |
+| **Doctor** | doctor_id, user_id (FK), specialization | Links to user, adds medical details |
+| **Patient** | patient_id, user_id (FK), dob, gender | Stores patient profiles |
+| **Summary** | summary_id, doctor_id (FK), patient_id (FK), summary_text | Stores AI-generated summaries |
+| **Audit Log** | log_id, user_id, action, timestamp | Tracks all system activity |
+
+### **NoSQL (Document-based) Collections**
+Used for **unstructured or multi-format data** such as uploaded files, anonymization details, and communications.
+
+| **Collection** | **Example Fields** | **Purpose** |
+|----------------|--------------------|--------------|
+| **files** | `_id`, `patientId`, `filePath`, `fileType`, `uploadedAt` | Stores metadata for uploaded files |
+| **anonymization** | `_id`, `fileId`, `status`, `removedFields` | Tracks data privacy and PHI removal |
+| **chat_notes** | `_id`, `senderId`, `receiverId`, `message`, `timestamp` | Handles secure doctor-patient communication |
+| **notifications** | `_id`, `userId`, `message`, `type`, `createdAt` | Sends system alerts and updates |
+
+---
+
+## **4. ER Diagram (Conceptual Model)**
+
+**High-Level Relationships:**
+- A **User** can be either a **Doctor** or a **Patient**.  
+- Each **Patient** can have multiple **Files** and **Summaries**.  
+- Each **File** has an **Anonymization record** (1–1).  
+- **Doctors** generate **Summaries** for **Patients** (1–M).  
+- **Audit Logs** track every user’s activity.  
+- **Chats** and **Notifications** connect users asynchronously.
+
+*(You can add your diagram here once created in Draw.io or Lucidchart)*  
+`![ER Diagram](images/multimed_fusion_er.png)`
+
+---
+
+## **5. Data Security Plan**
+
+### **A. Access Control**
+- **Role-Based Access Control (RBAC):**  
+  - **Doctor:** Access assigned patients and summaries only.  
+  - **Patient:** Access own records and anonymized data.  
+  - **Admin:** Manage users and logs, no medical data access.
+- All endpoints validated via backend middleware and JWT tokens.
+
+### **B. Encryption**
+- **In Transit:** HTTPS (TLS 1.3) for all API communications.  
+- **At Rest:** AES-256 encryption for all stored files and database fields.  
+- **Authentication:** Passwords stored using bcrypt hashing.
+
+### **C. Anonymization**
+- All PHI (names, IDs, addresses) automatically removed before file processing.  
+- Anonymization status stored in the `anonymization` collection.  
+- Verification logs recorded in audit trails.
+
+### **D. Audit & Logging**
+- Every file upload, access, or modification is logged in `audit_log`.  
+- Logs include timestamps, user IDs, and actions.  
+- Regular reviews by admin for suspicious activity.
+
+---
+
+## **6. Backup and Recovery Plan**
+
+| **Type** | **Frequency** | **Description** |
+|-----------|----------------|-----------------|
+| **Database Backup** | Daily | Automated snapshots of SQL and NoSQL databases. |
+| **File Backup** | Daily | Redundant storage (S3 + secondary region). |
+| **Disaster Recovery** | On Failure | System auto-switch to backup environment. |
+| **Audit Log Retention** | 1 year | Stored for compliance and traceability. |
+
+---
+
+## **7. Data Lifecycle Management**
+
+1. **Collection:** Files, forms, and notes uploaded by authorized users.  
+2. **Storage:** Data stored in encrypted cloud databases.  
+3. **Processing:** AI models create summaries (temporary compute layer).  
+4. **Access:** Controlled via tokens and permissions.  
+5. **Archival:** Inactive data archived after 1 year.  
+6. **Deletion:** Patient-requested data deletion per privacy policy.
+
+---
+
+## **8. Data Mapping to Functional Requirements**
+
+| **Functional Requirement** | **Data Source / Entity** | **Storage Type** | **Description** |
+|-----------------------------|--------------------------|------------------|-----------------|
+| User Authentication | User | SQL | Stores login and identity data |
+| File Upload & Management | Files | NoSQL | Handles unstructured medical files |
+| Data Anonymization | Anonymization | NoSQL | Tracks privacy and PHI removal |
+| AI Summary Generation | Summary | SQL | Stores structured summary data |
+| Doctor Dashboard | Summary, Patient | SQL | Fetches summaries linked to patients |
+| Patient Dashboard | Patient, Files | SQL + NoSQL | Displays history and anonymized files |
+| Notifications | Notifications | NoSQL | Alerts for uploads and summaries |
+| Chat Communication | Chat_Notes | NoSQL | Real-time secure communication |
+| Audit & Security | Audit_Log | SQL | Tracks every access or modification |
+
+---
+
+## **9. Data Compliance & Ethics**
+
+- Aligns with **HIPAA** and **GDPR** principles for medical data privacy.  
+- Patients retain **ownership and access control** of their medical data.  
+- Every data access logged for transparency.  
+- Data shared with AI modules is anonymized by default.  
+- Regular **security audits** ensure ongoing compliance.
+
+---
+
+## **10. Tools & Technologies**
+
+| **Layer** | **Technology** | **Purpose** |
+|------------|----------------|-------------|
+| **Backend** | FastAPI / Django | Data access, API security |
+| **Database (Relational)** | PostgreSQL | Structured data storage |
+| **Database (NoSQL)** | MongoDB Atlas | Unstructured medical files |
+| **File Storage** | AWS S3 (Encrypted) | Secure file handling |
+| **Authentication** | JWT + OAuth2 | Secure user session management |
+| **Encryption** | AES-256, bcrypt | Data and password protection |
+| **Backup** | AWS Backup + Cron Jobs | Redundancy and recovery |
+| **Monitoring** | Grafana + CloudWatch | Health and security monitoring |
+
+---
+
+## **11. Future Data Improvements**
+- Implement **vector embeddings** for AI-driven similarity search (Pinecone / FAISS).  
+- Add **FHIR-compatible data export** for integration with hospital systems.  
+- Develop **automated PHI detection models** for faster anonymization.  
+- Enable **data lineage visualization** to track AI usage history.
+
+---
+
+
+
+
 
 
