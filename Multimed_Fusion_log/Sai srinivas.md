@@ -1619,6 +1619,89 @@ Used for **unstructured or multi-format data** such as uploaded files, anonymiza
 
 
 
+---
+
+### **Daily Log: October  17, 2025**
+
+## **Objective**
+To document the process and method used to **convert the existing MultiMed Fusion web application** into a **fully functional mobile application** for iOS and Android platforms.  
+The mobile version aims to preserve all core features — AI summaries, file upload, anonymization, and dashboards — while optimizing the experience for smaller screens and offline access.
+
+---
+
+## **1. Background**
+The MultiMed Fusion web app was originally developed using:
+- **Frontend:** React (with TailwindCSS)
+- **Backend:** FastAPI / Django
+- **Database:** PostgreSQL and MongoDB (hybrid)
+
+To increase accessibility for doctors and patients, the decision was made to develop a **mobile version** using the existing backend APIs while redesigning the frontend for native mobile experiences.
+
+---
+
+## **2. Chosen Mobile Development Approach**
+
+| **Option** | **Description** | **Decision** |
+|-------------|----------------|---------------|
+| **Native (Swift & Kotlin)** | Separate codebases for iOS and Android | ❌ Too time-consuming |
+| **Cross-Platform (React Native)** | Single codebase using React principles | ✅ Selected |
+| **Hybrid WebView** | Embed existing web UI into a container app | ❌ Limited offline and hardware access |
+
+**Decision:** Use **React Native with Expo** to maximize code reuse from the web React app, ensuring cross-platform deployment.
+
+---
+
+## **3. Setup & Configuration**
+- Installed **React Native CLI** and **Expo** for fast prototyping.  
+- Cloned the existing **frontend repo** and modularized components for reuse.  
+- Connected the app to the existing **FastAPI backend** using Axios.  
+- Configured **React Navigation** for screen transitions.  
+- Set up development environments for both:
+  - **iOS (Xcode Simulator)**
+  - **Android (Android Studio Emulator)**
+
+---
+
+## **4. UI & UX Redesign**
+- Reworked layouts for **mobile responsiveness** and touch-based navigation.  
+- Simplified dashboard menus and grouped key actions (Upload, Summary, Settings).  
+- Added **tab navigation** and **bottom navigation bar** for easier access.  
+- Integrated **native modules** for:
+  - Camera access (file upload)
+  - Microphone access (audio notes)
+  - Local notifications
+
+**Major Screens Designed:**
+1. **Login & Signup**
+2. **Doctor Dashboard**
+3. **Patient Dashboard**
+4. **File Upload (Camera / File Picker)**
+5. **AI Summary View**
+6. **Anonymization Confirmation**
+7. **Notifications**
+8. **Settings**
+
+---
+
+## **5. API Integration**
+- Reused backend **REST APIs** developed for the web app.  
+- Integrated endpoints for:
+  - Authentication (JWT-based)
+  - File upload
+  - Summary retrieval
+  - Anonymization status check
+  - Notifications  
+- Added **interceptors** for secure token handling and automatic logout on token expiry.  
+
+Example Code:
+```javascript
+axios.get(`${API_URL}/summary/${patientId}`, {
+  headers: { Authorization: `Bearer ${token}` }
+})
+.then(response => setSummary(response.data))
+.catch(error => console.error(error));
+
+
 
 
 
