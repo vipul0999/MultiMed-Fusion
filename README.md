@@ -41,18 +41,18 @@ This helps:
 
 ## ✨ New Features (This Week’s Updates)
 
-- 🧩 **Anonymization & Validation Modules** → Added regex and validation functions to automatically mask names, emails, and phone numbers in patient data.  
-- 🧠 **Enhanced AI Summarization Pipeline** → Optimized text extraction, transcription, and embedding generation for improved accuracy.  
-- 🧾 **Developer Guide Added** → A complete setup and contribution guide (`DEVELOPER_GUIDE.md`) for onboarding new contributors.  
-- 🧪 **Testing Guide Created** → Detailed testing steps with **unit tests, integration tests, and Postman collection** added to `TESTING_GUIDE.md`.  
-- 📄 **Non-Functional Requirements (Iteration 2)** → Added documentation on performance, security, reliability, and compliance requirements.  
-- 🗂️ **Research Notes** → Added summarized findings on privacy, interoperability, and clinical summarization techniques.  
-- 🧰 **Environment Configuration Update** → Simplified `.env.sample` with clearer variable grouping and toggles for anonymization and async tasks.  
-- ⚙️ **Patient Record Merger Script** → Introduced `merge_patient_records.py` for combining multiple patient records with validation and logging.  
+- 🧩 **Data Management Plan Added** → Introduced `DATA_MANAGEMENT_PLAN.md` outlining database schema, ER diagram, and data security measures.  
+- 🧮 **New Medical Data Collector Script** → Added `medical_data_collector.py` for structured aggregation of lab results, prescriptions, and doctor notes.  
+- 🔒 **Enhanced Security Configuration** → Strengthened `.env.sample` with logging controls, admin monitoring, and JWT secret handling.  
+- 🗄️ **MongoDB Integration Improvements** → Refined schema to store anonymized patient records and AI-generated summaries efficiently.  
+- 🧾 **Improved Research Notes** → Expanded research documentation on de-identification, interoperability (FHIR), and multimodal AI models.  
+- 🧪 **Extended Test Cases** → Added unit tests for file validation, anonymization regex, and record merging logic.  
+- 📊 **ER Diagram & Data Flow Updates** → Updated architecture visuals to align with new data flow between patient records, summaries, and logs.  
+- 🧰 **Performance Enhancements** → Improved caching layer and async tasks toggle for faster summarization response.  
 
 ---
 
-## 📊 UML Diagrams
+## 📊 UML & System Diagrams
 
 To better understand the system, we created diagrams:
 
@@ -64,6 +64,9 @@ To better understand the system, we created diagrams:
 
 - **Sequence Diagram**  
   ![Sequence Diagram](https://github.com/vipul0999/MultiMed-Fusion/blob/main/Images/sequence_diagram.png)
+
+- **ER Diagram (New)**  
+  ![ER Diagram](https://github.com/vipul0999/MultiMed-Fusion/blob/main/Images/er_diagram.png)
 
 ---
 
@@ -83,6 +86,7 @@ To better understand the system, we created diagrams:
 - **Testing Guide** → [TESTING_GUIDE.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Testing-Guide)  
 - **Research Notes** → [RESEARCH_NOTES.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Research-Notes)  
 - **Non-Functional Requirements** → [NON_FUNCTIONAL_REQUIREMENTS.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Non-Functional-Requirements)  
+- **Data Management Plan** → [DATA_MANAGEMENT_PLAN.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Data-Management-Plan)  
 
 ---
 
@@ -94,7 +98,6 @@ To better understand the system, we created diagrams:
 - Real-time notifications via **WebSockets**.  
 - Integration with **hospital EHR systems**.  
 - Integration of **confidence scores** in AI-generated summaries.  
+- Incorporation of **multilingual query support** for global medical usage.  
 
 ---
-
-*Last updated: 10/10/2025*
