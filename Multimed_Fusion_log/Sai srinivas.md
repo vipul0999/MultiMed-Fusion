@@ -1699,7 +1699,67 @@ axios.get(`${API_URL}/summary/${patientId}`, {
   headers: { Authorization: `Bearer ${token}` }
 })
 .then(response => setSummary(response.data))
-.catch(error => console.error(error));
+.catch(error => console.error(error)) ;
+
+
+
+---
+
+### **Daily Log: October 27, 2025**
+
+## **Objective**
+To outline the process of **data seeding** for the **MultiMed Fusion** platform.  
+This step initializes the project database with **sample doctors, patients, medical files, summaries, and anonymized records** to support early development, testing, and UI/UX demonstrations before real data integration.
+
+---
+
+## **1. Purpose of Data Seeding**
+- To **simulate real-world medical workflows** in a controlled environment.  
+- To allow front-end developers to **test dashboards, search, uploads, and summaries** with live-like data.  
+- To provide **AI developers** with initial sample records for model integration and testing.  
+- To ensure **database integrity and schema validation** across all modules before production.  
+
+---
+
+## **2. Seeding Environment**
+| **Environment** | **Database** | **Description** |
+|------------------|--------------|-----------------|
+| **Local Development** | PostgreSQL + MongoDB | For backend and frontend developer testing. |
+| **Staging** | MongoDB Atlas (Cloud) | Used for integration with mobile and web clients. |
+
+**Tools Used:**
+- `pgAdmin` for SQL data import  
+- `MongoDB Compass` for NoSQL collections  
+- Python **seed scripts** via FastAPI for automated data injection  
+- JSON seed files for portability
+
+---
+
+## **3. Data Sets to be Seeded**
+
+### **A. User Data**
+| **Role** | **Fields** | **Example Values** |
+|-----------|------------|--------------------|
+| Doctor | `name`, `email`, `specialization`, `hospital` | "Dr. John Smith", "Cardiology", "City Medical Center" |
+| Patient | `name`, `dob`, `gender`, `contact` | "Jane Doe", "1990-05-14", "Female" |
+
+**Purpose:** To populate dashboards and enable role-based login testing.
+
+---
+
+### **B. Medical Files (NoSQL Collection: `files`)**
+```json
+{
+  "_id": "file001",
+  "patientId": "patient001",
+  "uploadedBy": "doctor001",
+  "fileName": "Blood_Test_Report.pdf",
+  "fileType": "lab_report",
+  "filePath": "s3://fusion/files/file001.pdf",
+  "anonymized": true,
+  "uploadedAt": "2025-09-21T09:30:00Z"
+}
+
 
 
 
