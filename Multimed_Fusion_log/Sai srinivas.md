@@ -1762,6 +1762,75 @@ This step initializes the project database with **sample doctors, patients, medi
 
 
 
+---
+
+### **Daily Log: October 29, 2025**
+
+
+---
+
+## **1. Purpose**
+- Prevent testing on live or production databases.  
+- Provide realistic, anonymized data to test core workflows.  
+- Maintain consistent data for automated testing, UI development, and backend integration.  
+- Allow seamless re-seeding whenever schema updates occur.
+
+---
+
+## **2. Seeding Policy**
+### **Rules**
+- Use only synthetic, randomly generated data (via Faker or manual creation).  
+- No personally identifiable or real patient health information (PHI).  
+- All seed files must follow the **ER schema** and remain version-controlled.  
+- Updated seed files committed after every schema or field change.
+
+### **Environments**
+| **Environment** | **Database Type** | **Purpose** |
+|------------------|-------------------|--------------|
+| Local Dev | PostgreSQL + MongoDB | Developer testing |
+| Staging | MongoDB Atlas | Integration with mobile app |
+| CI/CD | SQLite (mock) | Automated test runs |
+
+---
+
+## **3. Database Overview**
+MultiMed Fusion uses a **hybrid database model**:
+
+| **Type** | **Purpose** | **Technology** |
+|-----------|-------------|----------------|
+| SQL | Structured data: users, summaries, logs | PostgreSQL |
+| NoSQL | Unstructured data: files, anonymization, chat | MongoDB |
+
+---
+
+## **4. SQL Seed Data (`fusion_seed.sql`)**
+
+Example content for relational tables:
+```sql
+-- Users
+INSERT INTO users (user_id, name, email, role, password_hash)
+VALUES
+('doctor001', 'Dr. John Smith', 'dr.smith@fusion.com', 'doctor', 'hashedpass123'),
+('patient001', 'Jane Doe', 'jane@fusion.com', 'patient', 'hashedpass456');
+
+-- Doctors
+INSERT INTO doctors (doctor_id, user_id, specialization, hospital_affiliation)
+VALUES ('doctor001', 'doctor001', 'Cardiology', 'City Medical Center');
+
+-- Patients
+INSERT INTO patients (patient_id, user_id, dob, gender)
+VALUES ('patient001', 'patient001', '1990-05-14', 'Female');
+
+-- Summaries
+INSERT INTO summaries (summary_id, doctor_id, patient_id, summary_text, created_at)
+VALUES
+('sum001', 'doctor001', 'patient001', 'Blood report indicates normal glucose levels.', NOW());
+
+-- Audit Logs
+INSERT INTO audit_logs (log_id, user_id, action, timestamp)
+VALUES ('log001', 'doctor001', 'created_summary', NOW());
+
+
 
 
 
