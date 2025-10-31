@@ -1,0 +1,12 @@
+[
+  {"id": 1, "username": "dr_smith", "email": "dr.smith@example.com", "is_doctor": true, "is_patient": false},
+  {"id": 2, "username": "john_doe", "email": "john.doe@example.com", "is_doctor": false, "is_patient": true},
+  {"id": 3, "username": "dr_adams", "email": "dr.adams@example.com", "is_doctor": true, "is_patient": false},
+  {"id": 4, "username": "jane_doe", "email": "jane.doe@example.com", "is_doctor": false, "is_patient": true},
+  {"id": 5, "username": "dr_williams", "email": "dr.williams@example.com", "is_doctor": true, "is_patient": false},
+  {"id": 6, "username": "michael_smith", "email": "michael.smith@example.com", "is_doctor": false, "is_patient": true},
+  {"id": 7, "username": "dr_johnson", "email": "dr.johnson@example.com", "is_doctor": true, "is_patient": false},
+  {"id": 8, "username": "linda_jones", "email": "linda.jones@example.com", "is_doctor": false, "is_patient": true},
+  {"id": 9, "username": "dr_brown", "email": "dr.brown@example.com", "is_doctor": true, "is_patient": false},
+  {"id": 10, "username": "robert_davis", "email": "robert.davis@example.com", "is_doctor": false, "is_patient": true}
+]
