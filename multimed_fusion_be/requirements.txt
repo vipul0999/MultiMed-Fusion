@@ -25,3 +25,4 @@ django-cors-headers>=4.3
 #Celery for async tasks (e.g., long-running Gemini requests)
 celery>=5.3
 redis>=5.0
+tqdm
