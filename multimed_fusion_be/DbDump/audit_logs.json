@@ -1,0 +1,5 @@
+[
+  {"log_id": 401, "user_id": 1, "action_type": "view", "timestamp": "2025-10-31T09:00:00", "affected_data": "medical_files:101"},
+  {"log_id": 402, "user_id": 2, "action_type": "view", "timestamp": "2025-10-31T09:10:00", "affected_data": "ai_summaries:201"},
+  {"log_id": 403, "user_id": 3, "action_type": "modify", "timestamp": "2025-10-31T09:15:00", "affected_data": "vectors:302"}
+]

@@ -1,0 +1,8 @@
+[
+  {"vector_id": 301, "file_id": 101, "patient_id": 2, "doctor_id": 1, "vector_data": [0.12, 0.43, 0.56], "chunk_text": "Patient exhibits mild symptoms of hypertension."},
+  {"vector_id": 302, "file_id": 102, "patient_id": 4, "doctor_id": 3, "vector_data": [0.87, 0.23, 0.45], "chunk_text": "CT scan shows no abnormal lesions."},
+  {"vector_id": 303, "file_id": 103, "patient_id": 2, "doctor_id": 1, "vector_data": [0.33, 0.44, 0.22], "chunk_text": "Heart sounds normal."},
+  {"vector_id": 304, "file_id": 104, "patient_id": 6, "doctor_id": 5, "vector_data": [0.56, 0.78, 0.12], "chunk_text": "MRI indicates normal brain activity."},
+  {"vector_id": 305, "file_id": 105, "patient_id": 8, "doctor_id": 7, "vector_data": [0.44, 0.66, 0.55], "chunk_text": "X-ray shows fracture healing properly."},
+  {"vector_id": 306, "file_id": 106, "patient_id": 10, "doctor_id": 9, "vector_data": [0.11, 0.22, 0.33], "chunk_text": "Audio shows normal heart rhythm."}
+]

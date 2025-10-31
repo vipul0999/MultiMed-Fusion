@@ -1,0 +1,7 @@
+[
+  {"doctor_id": 1, "first_name": "Alice", "last_name": "Smith", "speciality": "Cardiology", "contact_info": "789 Oak St, 555-1111, dr.smith@example.com", "hospital_affiliation": "City Hospital"},
+  {"doctor_id": 3, "first_name": "Bob", "last_name": "Adams", "speciality": "Radiology", "contact_info": "321 Pine St, 555-2222, dr.adams@example.com", "hospital_affiliation": "County Hospital"},
+  {"doctor_id": 5, "first_name": "Carol", "last_name": "Williams", "speciality": "Neurology", "contact_info": "555 Birch St, 555-3333, dr.williams@example.com", "hospital_affiliation": "General Hospital"},
+  {"doctor_id": 7, "first_name": "David", "last_name": "Johnson", "speciality": "Orthopedics", "contact_info": "888 Cedar St, 555-4444, dr.johnson@example.com", "hospital_affiliation": "City Hospital"},
+  {"doctor_id": 9, "first_name": "Emily", "last_name": "Brown", "speciality": "Pediatrics", "contact_info": "111 Spruce St, 555-5555, dr.brown@example.com", "hospital_affiliation": "County Hospital"}
+]

@@ -1,0 +1,6 @@
+[
+  {"summary_id": 201, "file_id": 101, "summary_text": "Patient exhibits mild symptoms of hypertension.", "generation_date": "2025-10-31"},
+  {"summary_id": 202, "file_id": 102, "summary_text": "CT scan shows no abnormal lesions.", "generation_date": "2025-10-31"},
+  {"summary_id": 203, "file_id": 104, "summary_text": "MRI indicates normal brain activity.", "generation_date": "2025-10-31"},
+  {"summary_id": 204, "file_id": 105, "summary_text": "X-ray shows fracture healing properly.", "generation_date": "2025-10-31"}
+]

@@ -1,0 +1,8 @@
+[
+  {"file_id": 101, "file_type": "pdf", "file_name": "1-2.pdf", "file_size": 250000, "patient_id": 2, "doctor_id": 1, "file_path": "root/pdfs/1-2.pdf"},
+  {"file_id": 102, "file_type": "image", "file_name": "3-4.dcm", "file_size": 1500000, "patient_id": 4, "doctor_id": 3, "file_path": "root/images/3-4.dcm"},
+  {"file_id": 103, "file_type": "audio", "file_name": "1-2.wav", "file_size": 500000, "patient_id": 2, "doctor_id": 1, "file_path": "root/audio/1-2.wav"},
+  {"file_id": 104, "file_type": "pdf", "file_name": "5-6.pdf", "file_size": 300000, "patient_id": 6, "doctor_id": 5, "file_path": "root/pdfs/5-6.pdf"},
+  {"file_id": 105, "file_type": "image", "file_name": "7-8.png", "file_size": 1200000, "patient_id": 8, "doctor_id": 7, "file_path": "root/images/7-8.png"},
+  {"file_id": 106, "file_type": "audio", "file_name": "9-10.wav", "file_size": 450000, "patient_id": 10, "doctor_id": 9, "file_path": "root/audio/9-10.wav"}
+]
