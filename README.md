@@ -43,12 +43,12 @@ This helps:
 
 - 🧾 **Data Audit Logger Added** → Introduced `data_audit_logger.py` to track key system events such as file uploads, deletions, and record updates.  
   Each log entry now includes a timestamp, event type, user, and a short description for **traceability and compliance**.  
-- 🩺 **Integration Pipeline Enhancement** → `medical_data_collector.py` now works alongside the new audit logger for automatic event tracking when new patient data is created or updated.  
-- 💾 **Data Management Plan** → Created documentation outlining how patient records, embeddings, and logs are stored securely (with encryption and restricted access).  
-- 🧠 **Improved Data Validation** → Added safer file naming conventions with timestamps to avoid overwrites or unsafe filenames (`safe_filename_generator.py`).  
-- 📚 **Documentation Update** → Updated wiki and added new markdown pages for **Data Management**, **Audit Logging**, and **Secure Storage**.  
-- 🧰 **System Maintenance Scripts** → Added lightweight utilities for merging, validating, and cleaning old patient data records.  
-- 🔍 **Error Logging Improvements** → Enhanced exception handling and logging structure to avoid system crashes on file or JSON decode errors.  
+- 🩺 **Integration Pipeline Enhancement** → `medical_data_collector.py` now integrates with the audit logger to automatically record new patient data activities.  
+- 💾 **Data Management Plan** → Added new planning document outlining **data storage structure, security, and access control**.  
+- 🧠 **Improved Data Validation** → Added `safe_filename_generator.py` for generating safe filenames with timestamps to avoid naming conflicts or overwrites.  
+- 🧰 **Maintenance Utilities** → Introduced helper scripts for **merging, validating, and cleaning patient data**.  
+- 🔍 **Logging & Error Handling Improvements** → Added detailed exception handling and structured logging for file parsing and record validation errors.  
+- 📁 **Repository Organization** → Cleaned up project structure for easier navigation and updated `.env.sample` configuration file.
 
 ---
 
@@ -69,21 +69,17 @@ To better understand the system, we created diagrams:
 
 ## 🧪 Testing Overview
 
-- Unit and Integration testing via **PyTest**.  
-- API validation with **Postman**.  
-- Code coverage tracking in GitHub Actions.  
-- Redaction, validation, and audit logging modules now include test cases for event and error handling.  
-- Test results are automatically logged in `/tests/reports/`.  
+- Unit and integration testing using **PyTest**.  
+- API testing using **Postman**.  
+- Validation tests added for **redaction, filename generation, and data merging scripts**.  
+- Test results stored under `/tests/reports/` for consistency.  
 
 ---
 
-## 📚 Developer Documentation
+## 📚 Documentation
 
-- **Developer Guide** → [DEVELOPER_GUIDE.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Developer-Guide)  
-- **Testing Guide** → [TESTING_GUIDE.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Testing-Guide)  
-- **Research Notes** → [RESEARCH_NOTES.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Research-Notes)  
-- **Non-Functional Requirements** → [NON_FUNCTIONAL_REQUIREMENTS.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Non-Functional-Requirements)  
-- **Data Management Plan** → [DATA_MANAGEMENT_PLAN.md](https://github.com/vipul0999/MultiMed-Fusion/wiki/Data-Management-Plan)  
+- **Non-Functional Requirements** → Describes performance, security, reliability, and compliance standards.  
+- **Data Management Plan** → Explains what data is stored, how it’s structured, and how it’s secured.  
 
 ---
 
@@ -99,4 +95,4 @@ To better understand the system, we created diagrams:
 
 ---
 
-*Last updated: 10/17/2025*  
+*Last updated: 10/31/2025*
