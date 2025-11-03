@@ -26,3 +26,4 @@ django-cors-headers>=4.3
 celery>=5.3
 redis>=5.0
 tqdm
+django-cors-headers
