@@ -1946,6 +1946,131 @@ The system aims to:
 
 ---
 
+# MultiMed Fusion – Proposed List of Prototypes (Semester Plan)
+
+---
+
+### **Daily Log November 3 , 2025**
+
+
+
+## **1. Purpose**
+The proposed prototypes represent **tangible, functional versions** of key modules in the MultiMed Fusion system.  
+Each prototype will demonstrate the **core functionality**, **data flow**, and **user experience**, forming a foundation for full-scale development next semester.
+
+---
+
+## **2. Prototype Goals**
+- Build working models of critical system components.  
+- Demonstrate AI-driven medical summary generation.  
+- Validate anonymization and security workflows.  
+- Provide end-to-end connectivity between frontend, backend, and database.  
+- Prepare the system for real-world testing with dummy data.  
+
+---
+
+## **3. Proposed Prototypes (Semester Deliverables)**
+
+### **A. Prototype 1 – User Authentication & Role-Based Access**
+**Description:**  
+Develop login, signup, and password reset functionality with distinct dashboards for doctors and patients.  
+
+**Expected Outcome:**  
+- Secure authentication using JWT tokens.  
+- Role-based navigation and session timeout handling.  
+- Basic dashboard redirection post-login.
+
+**Planned Files/Modules:**  
+`LoginPage.jsx`, `SignupPage.jsx`, `DashboardRouter.jsx`
+
+---
+
+### **B. Prototype 2 – File Upload & Anonymization**
+**Description:**  
+Implement secure file upload system supporting PDFs, images, and audio notes. Include anonymization logic that automatically removes PHI before storage.
+
+**Expected Outcome:**  
+- Drag-and-drop upload for web; camera upload for mobile.  
+- Preview of uploaded file and anonymization confirmation.  
+- PHI removal validation using mock rules.  
+
+**Planned Files/Modules:**  
+`UploadComponent.jsx`, `AnonymizationScreen.jsx`, `FilePreviewModal.jsx`
+
+---
+
+### **C. Prototype 3 – AI Summary Generation**
+**Description:**  
+Develop the initial AI module for generating readable summaries of uploaded medical data.  
+
+**Expected Outcome:**  
+- Text summarization via mock FastAPI endpoint.  
+- Summary stored and displayed on Doctor Dashboard.  
+- Integration with dummy data and file references.
+
+**Planned Files/Modules:**  
+`SummaryDashboard.jsx`, `SummaryAPI.py`, `AIService.js`
+
+---
+
+### **D. Prototype 4 – Doctor & Patient Dashboards**
+**Description:**  
+Create role-specific dashboards showing uploaded files, summaries, and notifications.
+
+**Expected Outcome:**  
+- **Doctor Dashboard:** View summaries, add notes, verify anonymization.  
+- **Patient Dashboard:** View uploaded history and AI summaries.  
+- Interactive components with sample seed data.
+
+**Planned Files/Modules:**  
+`DoctorDashboard.jsx`, `PatientDashboard.jsx`, `AccessLogs.jsx`
+
+---
+
+### **E. Prototype 5 – Notifications & Collaboration Tools**
+**Description:**  
+Develop the foundation for communication between doctors and patients with system alerts and secure chat.
+
+**Expected Outcome:**  
+- Real-time notifications for summary creation and file uploads.  
+- Secure message exchange using WebSocket or mock API.  
+- Notification panel integrated into dashboard.
+
+**Planned Files/Modules:**  
+`ChatComponent.jsx`, `NotificationService.js`, `AlertsPanel.jsx`
+
+---
+
+### **F. Prototype 6 – Data Management & Seeding**
+**Description:**  
+Prepare full seed datasets (SQL + NoSQL) to populate dashboards and test features safely.
+
+**Expected Outcome:**  
+- Dummy doctor, patient, file, and summary data.  
+- SQL dump and JSON files for both databases.  
+- Scripts for automated loading and reset.
+
+**Planned Files/Modules:**  
+`fusion_seed.sql`, `fusion_nosql_seed.json`, `load_seed_data.py`
+
+---
+
+### **G. Prototype 7 – Mobile App Conversion (Phase 1)**
+**Description:**  
+Convert the web interface into a mobile app using React Native with shared backend services.  
+
+**Expected Outcome:**  
+- Login and summary viewing available on mobile.  
+- Camera upload and offline access demo.  
+- Mobile-friendly UI aligned with system branding.
+
+**Planned Files/Modules:**  
+`MobileLoginScreen.jsx`, `MobileSummaryView.jsx`, `OfflineMode.jsx`
+
+---
+
+
+
 
 
 
