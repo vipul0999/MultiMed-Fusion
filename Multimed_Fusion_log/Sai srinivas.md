@@ -2070,6 +2070,109 @@ Convert the web interface into a mobile app using React Native with shared backe
 ---
 
 
+# MultiMed Fusion – Frontend Feature Implementation Log
+
+---
+
+### **Daily Log: November  5 , 2025**
+
+
+---
+
+
+```jsx
+// UploadComponent.jsx
+import React, { useState } from "react";
+import axios from "axios";
+
+const UploadComponent = () => {
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [previewURLs, setPreviewURLs] = useState([]);
+  const [anonymize, setAnonymize] = useState(true);
+  const [uploadStatus, setUploadStatus] = useState("");
+
+  // Handle file selection
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+    setSelectedFiles(files);
+    setPreviewURLs(files.map((file) => URL.createObjectURL(file)));
+  };
+
+  // Handle file upload
+  const handleUpload = async () => {
+    const formData = new FormData();
+    selectedFiles.forEach((file) => formData.append("files", file));
+    formData.append("anonymize", anonymize);
+
+    try {
+      setUploadStatus("Uploading...");
+      const response = await axios.post("http://localhost:8000/api/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setUploadStatus(`✅ Upload successful: ${response.data.message}`);
+    } catch (error) {
+      setUploadStatus("❌ Upload failed. Please try again.");
+      console.error(error);
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-4 rounded-2xl shadow-md bg-white">
+      <h2 className="text-xl font-bold mb-4 text-center text-blue-600">Upload Medical Files</h2>
+
+      {/* File Input */}
+      <input
+        type="file"
+        multiple
+        onChange={handleFileChange}
+        className="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer mb-3"
+      />
+
+      {/* Anonymization Toggle */}
+      <div className="flex items-center justify-between mb-3">
+        <label className="text-gray-700 font-medium">Anonymize Before Upload</label>
+        <input
+          type="checkbox"
+          checked={anonymize}
+          onChange={() => setAnonymize(!anonymize)}
+          className="w-5 h-5 text-blue-600"
+        />
+      </div>
+
+      {/* Preview Section */}
+      {previewURLs.length > 0 && (
+        <div className="mb-3">
+          <h3 className="text-gray-600 font-medium mb-1">Preview:</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {previewURLs.map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt="File Preview"
+                className="w-full h-24 object-cover rounded-lg border"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Upload Button */}
+      <button
+        onClick={handleUpload}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+      >
+        Upload
+      </button>
+
+      {/* Upload Status */}
+      {uploadStatus && (
+        <p className="mt-3 text-center text-sm text-gray-700">{uploadStatus}</p>
+      )}
+    </div>
+  );
+};
+
+export default UploadComponent;
 
 
 
