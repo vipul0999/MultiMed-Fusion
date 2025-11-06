@@ -1,70 +1,106 @@
+# ==========================================================
+# 🌐 MultiMed Fusion - Environment Configuration Sample File
+# ==========================================================
+# This file defines the environment variables required
+# to configure and run the MultiMed Fusion backend application.
+# Rename this file to ".env" and update the placeholder values.
+# ==========================================================
+
 # -------------------------
-# General App Settings
+# ⚙️ General App Settings
 # -------------------------
 FLASK_ENV=development               # Flask environment (development/production)
 APP_ENV=development                 # Custom environment flag
 SECRET_KEY=replace_with_secret      # Security key for sessions
 JWT_SECRET=replace_with_jwt_secret  # Secret key for JWT tokens
+APP_NAME=MultiMed-Fusion
+APP_VERSION=1.2.0
 
 # -------------------------
-# Database (choose one)
+# 🗄️ Database Configuration (choose one)
 # -------------------------
+# MongoDB (for JSON-like medical data)
 MONGODB_URI=mongodb://user:pass@localhost:27017/multimed_fusion_db
+
+# PostgreSQL (for structured relational storage)
 DATABASE_URL=postgresql://user:pass@localhost:5432/multimed_fusion_db
 
 # -------------------------
-# File Storage (AWS S3 or similar)
+# ☁️ File Storage (AWS S3 or similar)
 # -------------------------
 S3_BUCKET=your-bucket-name
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 S3_REGION=us-east-1
 ENABLE_FILE_VERSIONING=true         # Keep old versions of uploaded files
+MAX_UPLOAD_SIZE_MB=200              # File size limit in MB
 
 # -------------------------
-# AI Models / APIs
+# 🤖 AI Models / APIs
 # -------------------------
 HUGGINGFACE_API_KEY=hf_xxx
 OPENAI_API_KEY=sk-xxx
 MODEL_ENDPOINT=http://localhost:8000/predict_summary
 DEFAULT_SUMMARY_LANGUAGE=en         # Default language for summaries
+ENABLE_CONFIDENCE_SCORES=true       # Add confidence levels to AI responses
+ENABLE_AI_SUMMARIZATION=true        # Toggle summarization pipeline
 
 # -------------------------
-# Audio Transcription
+# 🎧 Audio Transcription
 # -------------------------
 TRANSCRIBE_API_KEY=your_transcription_service_key
+ENABLE_AUDIO_TRANSCRIPTION=true     # Enable/disable audio note transcription
 
 # -------------------------
-# DICOM Paths (for medical images)
+# 🩻 DICOM Paths (for medical images)
 # -------------------------
 DICOM_STORAGE_PATH=/data/dicom
 DICOM_TEMP_PATH=/tmp/dicom_processing
+ENABLE_DICOM_PROCESSING=true        # Toggle DICOM anonymization & handling
 
 # -------------------------
-# Background Tasks / Cache
+# ⚡ Background Tasks / Caching
 # -------------------------
 REDIS_URL=redis://localhost:6379/0
 CACHE_EXPIRY=3600                   # Cache expiration time in seconds
-ENABLE_ASYNC_TASKS=false            # Enable background tasks if needed
+ENABLE_ASYNC_TASKS=true             # Enable background summarization tasks
+ENABLE_CACHING=true                 # Use cache for repeated queries
 
 # -------------------------
-# Logging & Controls
+# 🔐 Security & Anonymization
+# -------------------------
+ENABLE_ANONYMIZATION=true           # Automatically remove PHI (patient info)
+ANONYMIZATION_MODE=regex_spacy      # Supported: regex_spacy / presidio
+ENCRYPTION_ENABLED=true             # Encrypt sensitive data in database
+
+# -------------------------
+# 🧩 Logging & Monitoring
 # -------------------------
 LOG_LEVEL=INFO
-ENABLE_ANONYMIZATION=true
-MAX_UPLOAD_SIZE_MB=200
 ENABLE_ADMIN_MONITORING=true        # Enable /health and /metrics endpoints
+ENABLE_AUDIT_LOGS=true              # Track user and system actions
+LOG_FILE_PATH=logs/app.log
+ENABLE_ERROR_ALERTS=false           # Enable alerts for failed API calls
 
 # -------------------------
-# Frontend / CORS Settings
+# 🖥️ Frontend / CORS Settings
 # -------------------------
 ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+FRONTEND_BASE_URL=http://localhost:3000
 
 # -------------------------
-# Email / Notifications
+# 📧 Email / Notifications
 # -------------------------
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
-ENABLE_EMAIL_NOTIFICATIONS=false    # Toggle for email alerts
+ENABLE_EMAIL_NOTIFICATIONS=true     # Toggle for email alerts
+NOTIFICATION_LANGUAGE=en            # Default email language (English)
+
+# -------------------------
+# 🧠 Developer & Debug
+# -------------------------
+DEBUG_MODE=true
+ENABLE_TEST_DATA=true               # Load seed data for local development
+ENABLE_API_DOCS=true                # Enable Swagger / API docs at /docs
