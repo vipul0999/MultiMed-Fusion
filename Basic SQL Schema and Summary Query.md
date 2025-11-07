@@ -3,54 +3,34 @@
 ```sql
 DROP VIEW IF EXISTS summary;
 DROP VIEW IF EXISTS get_patient_event_count;
+DROP VIEW IF EXISTS get_patient_latest_event_detail;
 DROP TABLE IF EXISTS fusion_event;
 DROP TABLE IF EXISTS patient;
 
-CREATE TABLE patient (
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL,
-  mrn TEXT NOT NULL UNIQUE
-);
+CREATE TABLE patient(id INT PRIMARY KEY,name TEXT,mrn TEXT UNIQUE);
+CREATE TABLE fusion_event(id INT PRIMARY KEY,patient_id INT,modality TEXT,content TEXT,created_at TEXT);
 
-CREATE TABLE fusion_event (
-  id INTEGER PRIMARY KEY,
-  patient_id INTEGER NOT NULL REFERENCES patient(id) ON DELETE CASCADE,
-  modality TEXT NOT NULL CHECK (modality IN ('lab','note','image')),
-  content TEXT NOT NULL,
-  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX idx_fusion_event_patient_id ON fusion_event(patient_id);
-
-INSERT INTO patient (id, name, mrn) VALUES
-  (1, 'Charan', 'MRN001'),
-  (2, 'Hasini', 'MRN002');
-
-INSERT INTO fusion_event (id, patient_id, modality, content) VALUES
-  (1, 1, 'lab', 'HbA1c=6.8'),
-  (2, 1, 'note', 'Shortness of breath'),
-  (3, 2, 'image', 'Chest X-ray normal');
+INSERT INTO patient VALUES(1,'Charan','MRN001'),(2,'Hasini','MRN002');
+INSERT INTO fusion_event VALUES
+(1,1,'lab','HbA1c=6.8','2025-11-07 10:00'),
+(2,1,'note','Shortness of breath','2025-11-07 12:00'),
+(3,2,'image','Chest X-ray normal','2025-11-07 09:30');
 
 CREATE VIEW summary AS
-SELECT
-  p.name,
-  COUNT(f.id) AS total_events,
-  MAX(f.created_at) AS last_event_at
-FROM patient p
-LEFT JOIN fusion_event f ON f.patient_id = p.id
-GROUP BY p.name;
+SELECT p.name,COUNT(f.id) total_events,MAX(f.created_at) last_event_at
+FROM patient p LEFT JOIN fusion_event f ON f.patient_id=p.id GROUP BY p.name;
 
--- "Function" substitute for SQLite: a view returning per-patient counts
 CREATE VIEW get_patient_event_count AS
-SELECT
-  p.name AS patient_name,
-  COUNT(f.id) AS event_count
-FROM patient p
-LEFT JOIN fusion_event f ON f.patient_id = p.id
-GROUP BY p.name;
+SELECT p.name patient_name,COUNT(f.id) event_count
+FROM patient p LEFT JOIN fusion_event f ON f.patient_id=p.id GROUP BY p.name;
 
--- Examples
-SELECT * FROM summary;
-SELECT * FROM get_patient_event_count WHERE patient_name = 'Charan';
+CREATE VIEW get_patient_latest_event_detail AS
+SELECT p.name patient_name,f.modality,f.content,f.created_at last_event_at
+FROM patient p LEFT JOIN fusion_event f ON f.id=(
+  SELECT f2.id FROM fusion_event f2 WHERE f2.patient_id=p.id ORDER BY f2.created_at DESC LIMIT 1
+);
 
 SELECT * FROM summary;
+SELECT * FROM get_patient_event_count;
+SELECT * FROM get_patient_latest_event_detail;
+
