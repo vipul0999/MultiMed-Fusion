@@ -2176,6 +2176,115 @@ export default UploadComponent;
 
 
 
+---
+
+### **Daily Log: November  7 , 2025**
+
+
+
+---
+
+
+
+## **1. Seed Script Implemented:** `seed_users.py`
+
+```python
+"""
+seed_users.py – Script to seed dummy users into PostgreSQL for MultiMed Fusion
+Author: MultiMed Fusion Dev Team
+Date: September 26, 2025
+"""
+
+import psycopg2
+from psycopg2 import sql
+from datetime import datetime
+import bcrypt
+
+# Database connection
+conn = psycopg2.connect(
+    host="localhost",
+    database="multimed_fusion",
+    user="postgres",
+    password="admin123"
+)
+cur = conn.cursor()
+
+# Helper function for password hashing
+def hash_password(password: str):
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+# Dummy user data
+users = [
+    {
+        "user_id": "user001",
+        "name": "Dr. John Smith",
+        "email": "dr.john@fusion.com",
+        "role": "doctor",
+        "password": hash_password("Doctor@123"),
+        "created_at": datetime.now()
+    },
+    {
+        "user_id": "user002",
+        "name": "Dr. Emily Carter",
+        "email": "dr.emily@fusion.com",
+        "role": "doctor",
+        "password": hash_password("Doctor@321"),
+        "created_at": datetime.now()
+    },
+    {
+        "user_id": "user003",
+        "name": "Jane Doe",
+        "email": "jane.doe@fusion.com",
+        "role": "patient",
+        "password": hash_password("Patient@123"),
+        "created_at": datetime.now()
+    },
+    {
+        "user_id": "user004",
+        "name": "Adam Lee",
+        "email": "adam.lee@fusion.com",
+        "role": "patient",
+        "password": hash_password("Patient@321"),
+        "created_at": datetime.now()
+    },
+    {
+        "user_id": "user005",
+        "name": "Admin User",
+        "email": "admin@fusion.com",
+        "role": "admin",
+        "password": hash_password("Admin@123"),
+        "created_at": datetime.now()
+    }
+]
+
+# Create table if not exists
+cur.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    user_id VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    role VARCHAR(20) CHECK (role IN ('doctor', 'patient', 'admin')),
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+""")
+
+# Insert users
+for u in users:
+    cur.execute(
+        sql.SQL("""
+            INSERT INTO users (user_id, name, email, role, password_hash, created_at)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (user_id) DO NOTHING;
+        """),
+        (u["user_id"], u["name"], u["email"], u["role"], u["password"], u["created_at"])
+    )
+
+conn.commit()
+cur.close()
+conn.close()
+
+print("User seed data successfully inserted into database!")
 
 
 
