@@ -24,6 +24,54 @@ class PatientViewSet(viewsets.ModelViewSet):
             '60+': queryset.filter(age__gt=60).count(),
         }
 
+
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from django.db.models import Count
+
+from .models import Doctor
+from .serializers import DoctorSerializer
+
+
+class DoctorViewSet(viewsets.ModelViewSet):
+    serializer_class = DoctorSerializer
+
+    def get_queryset(self):
+        # Only admin or staff can view doctors, modify logic if needed
+        user = self.request.user
+        if user.is_staff:
+            return Doctor.objects.all()
+
+        # Otherwise return only the logged-in doctor's record
+        return Doctor.objects.filter(user=user)
+
+    @action(detail=False, methods=['get'])
+    def dashboard(self, request):
+        queryset = self.get_queryset()
+        total_doctors = queryset.count()
+
+        # Example: group doctors by specialty
+        specialties = queryset.values('specialty').annotate(
+            count=Count('specialty')
+        )
+
+        # Optional: doctor experience buckets
+        exp_groups = {
+            '0-5 yrs': queryset.filter(experience__lte=5).count(),
+            '6-15 yrs': queryset.filter(experience__gte=6, experience__lte=15).count(),
+            '15+ yrs': queryset.filter(experience__gt=15).count(),
+        }
+
+        data = {
+            'total_doctors': total_doctors,
+            'specialties': specialties,
+            'experience_groups': exp_groups,
+            'doctors': DoctorSerializer(queryset, many=True).data
+        }
+        return Response(data)
+
+
         data = {
             'total_patients': total_patients,
             'age_groups': age_groups,
