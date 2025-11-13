@@ -2406,4 +2406,90 @@ By combining HTTPS, encryption, JWT-based authentication, and firewall isolation
 
 ---
 
+# MultiMed Fusion – Software Requirements Specification (SRS)
+
+---
+
+### **1. Project Information**
+
+**Project Title:**  
+MultiMed Fusion – Multi-Modal Medical Data & AI Summary System
+
+**Goal:**  
+To build a secure platform for doctors and patients to upload, anonymize, and summarize medical data (reports, images, audio) using AI.
+
+
+
+**Problem Statement:**  
+Medical data is scattered and time-consuming to review. MultiMed Fusion solves this by collecting all medical files in one place, anonymizing them, and generating AI summaries for faster understanding.
+
+---
+
+### **2. Design**
+
+**Use Cases:**  
+1. Upload medical files  
+2. Anonymize sensitive data  
+3. Generate AI summaries  
+4. Search and filter reports  
+5. Doctor–patient file requests  
+6. View dashboard and notifications  
+
+---
+
+**Functional Requirements:**  
+- Secure file upload and storage  
+- Automatic PHI anonymization  
+- AI summarization with original file links  
+- Search and filter functionality  
+- Role-based access (Doctor/Patient/Admin)  
+- Notifications and dashboard access  
+
+---
+
+**Non-Functional Requirements:**  
+- **Security:** HTTPS, JWT, and encryption  
+- **Usability:** Simple, responsive UI  
+- **Performance:** Fast upload and AI response  
+- **Reliability:** 99.9% uptime goal  
+- **Compliance:** Privacy-focused, HIPAA-style  
+
+---
+
+**Data Management Plan:**  
+- Databases: PostgreSQL (users, summaries) and MongoDB (files, logs).  
+- Data stored: user info, files, summaries, messages, logs.  
+- All sensitive data encrypted in transit and at rest.  
+- Dummy seed data used for development (SQL + JSON).
+
+---
+
+**Proposed Prototypes (This Semester):**  
+1. File Upload & Storage  
+2. Data Anonymization  
+3. AI Summarization  
+4. Search & Filter  
+5. Doctor–Patient Communication  
+6. Notifications  
+7. Dashboard Overview  
+8. Mobile Prototype (Phase 1)
+
+---
+
+### **3. Meeting Minutes Summary**
+
+- **Aug 29:** Project idea, tech stack decided.  
+- **Sep 5:** Architecture and data flow finalized.  
+- **Sep 10:** Prototype plan created.  
+- **Sep 20:** Network security plan discussed.  
+- **Sep 28:** Progress review and SRS completion.
+
+---
+
+### **4. Conclusion**
+
+MultiMed Fusion will deliver secure, AI-powered medical data management with working prototypes for upload, anonymization, summarization, and dashboards by semester end.
+
+---
+
 
