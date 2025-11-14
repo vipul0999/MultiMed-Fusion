@@ -2492,4 +2492,39 @@ MultiMed Fusion will deliver secure, AI-powered medical data management with wor
 
 ---
 
+# MultiMed Fusion – JSON Seed Data Creation Log
+
+---
+
+### **Daily Log: November 14, 2025**
+
+
+## **Files Created**
+1. `users.json`  
+2. `files.json`  
+3. `summaries.json`  
+4. `anonymization.json`  
+5. `notifications.json`
+
+Each file is formatted for **native MongoDB import** using `mongoimport`.
+
+---
+
+## **1. users.json**
+
+```json
+[
+  {
+    "_id": "user001",
+    "name": "Dr. John Smith",
+    "email": "dr.john@fusion.com",
+    "role": "doctor"
+  },
+  {
+    "_id": "user003",
+    "name": "Jane Doe",
+    "email": "jane.doe@fusion.com",
+    "role": "patient"
+  }
+]
 
