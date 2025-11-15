@@ -48,6 +48,10 @@ class LoginView(APIView):
             }, status=status.HTTP_200_OK)
 
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+    @action(detail=False, methods=["post"], permission_classes=[IsAuthenticated])
+    def logout(self, request):
+        logout(request)
+        return Response({"message": "Logged out successfully"})
 
 
 
@@ -157,3 +161,5 @@ class ChangePasswordView(APIView):
             {"message": "Password updated successfully."},
             status=status.HTTP_200_OK
         )
+
+
