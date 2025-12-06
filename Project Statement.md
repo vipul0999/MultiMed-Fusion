@@ -1,7 +1,0 @@
-## Daily Log: September 8 2025 - Team 3
-
-## Project Statement
-
-Doctors frequently review patients’ information that is present across lab reports, radiology images, and dictated or transcribed notes before making decisions about patient care. These reports are stored in different places and formats, so each one must be opened and read separately. Clinicians then try to connect details across sources while working under time pressure, which increases the chance that important findings are overlooked.
-
-In the current process, files arrive through multiple channels—EHR attachments, shared drives, email, and departmental systems. Staff search for the latest version, open each file, scan for key values, and copy or retype details into personal notes or into the record. When something isn’t clear, staff usually ask a coworker and wait to hear back. Information is passed around through email or chat, so there’s never one clear view of the case. The same document may exist in several versions with different names, and it is not always obvious which one should be trusted.
