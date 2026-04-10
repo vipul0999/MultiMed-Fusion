@@ -1,29 +1,43 @@
-# Django & core dependencies
-Django>=4.2
-djangorestframework>=3.14
+# Django and Core
+Django==5.1.5
+djangorestframework==3.15.0
+django-cors-headers==4.4.0
+django-mongodb-backend==5.1.5
 
-# Gemini (Google Generative AI)
-google-generativeai>=0.3.2
+# JWT Authentication
+djangorestframework-simplejwt==5.3.2
 
-# Data Analysis
-pandas>=2.1
-numpy>=1.25
-scikit-learn>=1.3
-matplotlib>=3.8
-seaborn>=0.12
+# Environment Variables
+python-dotenv==1.0.1
 
-#upyter support for interactive analysis (if needed)
-jupyterlab>=4.0
+# PDF Processing
+pypdf==5.1.0
 
-#Environment & utility
-python-dotenv>=1.0
-requests>=2.31
+# Document Processing
+python-docx==1.2.2
+pydicom==2.4.4
 
-#CORS support for APIs
-django-cors-headers>=4.3
+# Text Embeddings (FastEmbed)
+fastembed==0.3.5
 
-#Celery for async tasks (e.g., long-running Gemini requests)
-celery>=5.3
-redis>=5.0
-tqdm
-django-cors-headers
+# Numerical Computing
+numpy==1.26.4
+
+# Database/ORM
+pymongo==4.10.1
+
+# Audio Processing (Faster & Lightweight)
+faster-whisper==1.0.3
+
+# Image OCR (Fast)
+pytesseract==0.3.10
+
+# Pillow for image processing
+Pillow==10.2.0
+
+# Gemini AI Integration
+google-generativeai==0.3.0
+
+# Utilities
+requests==2.32.3
+
