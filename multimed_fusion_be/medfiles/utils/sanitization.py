@@ -111,7 +111,6 @@ def anonymize_patient_text(text: str, patient=None) -> str:
         replacements = {
             getattr(patient, "username", ""): "[PATIENT]",
             getattr(patient, "email", ""): "[PATIENT_EMAIL]",
-            str(getattr(patient, "id", "")): "[PATIENT_ID]",
         }
 
         for raw, token in replacements.items():
