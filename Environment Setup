@@ -9,83 +9,83 @@
 # -------------------------
 # ⚙️ General App Settings
 # -------------------------
-FLASK_ENV=development               # Flask environment (development/production)
+DJANGO_ENV=development              # Django environment (development/production)
 APP_ENV=development                 # Custom environment flag
-SECRET_KEY=replace_with_secret      # Security key for sessions
-JWT_SECRET=replace_with_jwt_secret  # Secret key for JWT tokens
+SECRET_KEY=replace_with_secret      # Django secret key for cryptographic signing
+JWT_SECRET=replace_with_jwt_secret  # Secret key for JWT token generation (djangorestframework-simplejwt)
 APP_NAME=MultiMed-Fusion
 APP_VERSION=1.2.0
 
 # -------------------------
-# 🗄️ Database Configuration (choose one)
+# 🗄️ Database Configuration
 # -------------------------
-# MongoDB (for JSON-like medical data)
+# MongoDB (primary — for patient records, embeddings, AI summaries, audit logs)
 MONGODB_URI=mongodb://user:pass@localhost:27017/multimed_fusion_db
 
-# PostgreSQL (for structured relational storage)
+# PostgreSQL (for structured relational data — user accounts, access control)
 DATABASE_URL=postgresql://user:pass@localhost:5432/multimed_fusion_db
 
 # -------------------------
-# ☁️ File Storage (AWS S3 or similar)
+# ☁️ File Storage (AWS S3)
 # -------------------------
 S3_BUCKET=your-bucket-name
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 S3_REGION=us-east-1
-ENABLE_FILE_VERSIONING=true         # Keep old versions of uploaded files
-MAX_UPLOAD_SIZE_MB=200              # File size limit in MB
+ENABLE_FILE_VERSIONING=true         # Keep old versions of uploaded medical files
+MAX_UPLOAD_SIZE_MB=200              # Maximum file size limit in MB
 
 # -------------------------
 # 🤖 AI Models / APIs
 # -------------------------
-HUGGINGFACE_API_KEY=hf_xxx
-OPENAI_API_KEY=sk-xxx
-MODEL_ENDPOINT=http://localhost:8000/predict_summary
-DEFAULT_SUMMARY_LANGUAGE=en         # Default language for summaries
-ENABLE_CONFIDENCE_SCORES=true       # Add confidence levels to AI responses
-ENABLE_AI_SUMMARIZATION=true        # Toggle summarization pipeline
+HUGGINGFACE_API_KEY=hf_xxx          # Hugging Face API key for transformer models
+OPENAI_API_KEY=sk-xxx               # OpenAI API key for LLM-based summarization
+MODEL_ENDPOINT=http://localhost:8000/predict_summary  # Local model inference endpoint
+DEFAULT_SUMMARY_LANGUAGE=en         # Default language for AI-generated summaries
+ENABLE_CONFIDENCE_SCORES=true       # Attach confidence scores to AI responses
+ENABLE_AI_SUMMARIZATION=true        # Toggle the RAG summarization pipeline on/off
 
 # -------------------------
 # 🎧 Audio Transcription
 # -------------------------
-TRANSCRIBE_API_KEY=your_transcription_service_key
-ENABLE_AUDIO_TRANSCRIPTION=true     # Enable/disable audio note transcription
+TRANSCRIBE_API_KEY=your_transcription_service_key   # API key for speech-to-text service
+ENABLE_AUDIO_TRANSCRIPTION=true     # Enable/disable audio note transcription pipeline
 
 # -------------------------
-# 🩻 DICOM Paths (for medical images)
+# 🩻 DICOM Paths (Medical Imaging)
 # -------------------------
-DICOM_STORAGE_PATH=/data/dicom
-DICOM_TEMP_PATH=/tmp/dicom_processing
-ENABLE_DICOM_PROCESSING=true        # Toggle DICOM anonymization & handling
+DICOM_STORAGE_PATH=/data/dicom                      # Persistent storage path for DICOM files
+DICOM_TEMP_PATH=/tmp/dicom_processing               # Temp path for DICOM anonymization processing
+ENABLE_DICOM_PROCESSING=true        # Toggle DICOM anonymization and handling
 
 # -------------------------
-# ⚡ Background Tasks / Caching
+# ⚡ Background Tasks / Caching (Celery + Redis)
 # -------------------------
-REDIS_URL=redis://localhost:6379/0
-CACHE_EXPIRY=3600                   # Cache expiration time in seconds
-ENABLE_ASYNC_TASKS=true             # Enable background summarization tasks
-ENABLE_CACHING=true                 # Use cache for repeated queries
+REDIS_URL=redis://localhost:6379/0  # Redis URL used as Celery broker and cache backend
+CACHE_EXPIRY=3600                   # Cache expiration time in seconds (1 hour)
+ENABLE_ASYNC_TASKS=true             # Enable Celery background tasks (OCR, embedding, transcription)
+ENABLE_CACHING=true                 # Enable Redis caching for repeated queries
 
 # -------------------------
 # 🔐 Security & Anonymization
 # -------------------------
-ENABLE_ANONYMIZATION=true           # Automatically remove PHI (patient info)
-ANONYMIZATION_MODE=regex_spacy      # Supported: regex_spacy / presidio
-ENCRYPTION_ENABLED=true             # Encrypt sensitive data in database
+ENABLE_ANONYMIZATION=true           # Automatically strip PHI (Protected Health Information)
+ANONYMIZATION_MODE=regex_spacy      # Anonymization engine: regex_spacy (default) or presidio
+ENCRYPTION_ENABLED=true             # Encrypt sensitive fields at rest in the database
 
 # -------------------------
 # 🧩 Logging & Monitoring
 # -------------------------
-LOG_LEVEL=INFO
-ENABLE_ADMIN_MONITORING=true        # Enable /health and /metrics endpoints
-ENABLE_AUDIT_LOGS=true              # Track user and system actions
-LOG_FILE_PATH=logs/app.log
-ENABLE_ERROR_ALERTS=false           # Enable alerts for failed API calls
+LOG_LEVEL=INFO                      # Logging level: DEBUG / INFO / WARNING / ERROR
+ENABLE_ADMIN_MONITORING=true        # Expose /health and /metrics endpoints for monitoring
+ENABLE_AUDIT_LOGS=true              # Log all user and system actions for HIPAA traceability
+LOG_FILE_PATH=logs/app.log          # File path for application logs
+ENABLE_ERROR_ALERTS=false           # Send alerts on failed API calls (set true in production)
 
 # -------------------------
 # 🖥️ Frontend / CORS Settings
 # -------------------------
-ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000   # React frontend dev origins
 FRONTEND_BASE_URL=http://localhost:3000
 
 # -------------------------
@@ -95,12 +95,12 @@ SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
-ENABLE_EMAIL_NOTIFICATIONS=true     # Toggle for email alerts
-NOTIFICATION_LANGUAGE=en            # Default email language (English)
+ENABLE_EMAIL_NOTIFICATIONS=true     # Toggle email alerts for system events
+NOTIFICATION_LANGUAGE=en            # Language for outgoing notification emails
 
 # -------------------------
 # 🧠 Developer & Debug
 # -------------------------
-DEBUG_MODE=true
-ENABLE_TEST_DATA=true               # Load seed data for local development
-ENABLE_API_DOCS=true                # Enable Swagger / API docs at /docs
+DEBUG_MODE=true                     # Enable Django debug mode (set false in production)
+ENABLE_TEST_DATA=true               # Load MongoDB seed data for local development
+ENABLE_API_DOCS=true                # Enable Django REST Framework Swagger docs at /docs
